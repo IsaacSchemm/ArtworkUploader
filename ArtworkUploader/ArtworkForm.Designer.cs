@@ -79,7 +79,7 @@
 			splitContainer1.Panel2.Controls.Add(txtTitle);
 			splitContainer1.Panel2.Controls.Add(lblTitle);
 			splitContainer1.Size = new System.Drawing.Size(518, 450);
-			splitContainer1.SplitterDistance = 203;
+			splitContainer1.SplitterDistance = 202;
 			splitContainer1.SplitterWidth = 5;
 			splitContainer1.TabIndex = 0;
 			// 
@@ -89,7 +89,7 @@
 			pictureBox1.Location = new System.Drawing.Point(0, 0);
 			pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new System.Drawing.Size(518, 203);
+			pictureBox1.Size = new System.Drawing.Size(518, 202);
 			pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
@@ -209,28 +209,28 @@
 			// openToolStripMenuItem
 			// 
 			openToolStripMenuItem.Name = "openToolStripMenuItem";
-			openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			openToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			openToolStripMenuItem.Text = "&Open...";
 			openToolStripMenuItem.Click += openToolStripMenuItem_Click;
 			// 
 			// exportAsToolStripMenuItem
 			// 
 			exportAsToolStripMenuItem.Name = "exportAsToolStripMenuItem";
-			exportAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			exportAsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			exportAsToolStripMenuItem.Text = "Export As...";
 			exportAsToolStripMenuItem.Click += exportAsToolStripMenuItem_Click;
 			// 
 			// closeToolStripMenuItem
 			// 
 			closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-			closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			closeToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			closeToolStripMenuItem.Text = "&Close";
 			closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
 			// 
 			// exitToolStripMenuItem
 			// 
 			exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			exitToolStripMenuItem.Text = "E&xit";
 			exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
 			// 
@@ -244,8 +244,8 @@
 			// mainWindowAccountSetupToolStripMenuItem
 			// 
 			mainWindowAccountSetupToolStripMenuItem.Name = "mainWindowAccountSetupToolStripMenuItem";
-			mainWindowAccountSetupToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-			mainWindowAccountSetupToolStripMenuItem.Text = "&Main Window / Account Setup";
+			mainWindowAccountSetupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			mainWindowAccountSetupToolStripMenuItem.Text = "&Account Setup";
 			mainWindowAccountSetupToolStripMenuItem.Click += mainWindowAccountSetupToolStripMenuItem_Click;
 			// 
 			// helpToolStripMenuItem
