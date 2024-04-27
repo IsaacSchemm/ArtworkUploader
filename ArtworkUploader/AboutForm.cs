@@ -17,5 +17,9 @@ namespace ArtworkUploader {
 		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
 			System.Diagnostics.Process.Start(linkLabel1.Text);
 		}
+
+		private void textBox1_TextChanged(object sender, EventArgs e) {
+
+		}
 	}
 }

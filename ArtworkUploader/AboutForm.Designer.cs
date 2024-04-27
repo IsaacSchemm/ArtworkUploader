@@ -34,25 +34,25 @@
 			// 
 			label1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			label1.Location = new System.Drawing.Point(14, 9);
+			label1.Location = new System.Drawing.Point(13, 9);
 			label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			label1.Name = "label1";
 			label1.Size = new System.Drawing.Size(536, 26);
 			label1.TabIndex = 0;
-			label1.Text = "CrosspostSharp 5.0 beta";
+			label1.Text = "Artwork Uploader 6.0";
 			label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// linkLabel1
 			// 
 			linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			linkLabel1.AutoSize = true;
-			linkLabel1.Location = new System.Drawing.Point(292, 35);
+			linkLabel1.Location = new System.Drawing.Point(267, 35);
 			linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			linkLabel1.Name = "linkLabel1";
-			linkLabel1.Size = new System.Drawing.Size(260, 15);
+			linkLabel1.Size = new System.Drawing.Size(282, 15);
 			linkLabel1.TabIndex = 1;
 			linkLabel1.TabStop = true;
-			linkLabel1.Text = "https://github.com/libertyernie/CrosspostSharp";
+			linkLabel1.Text = "https://github.com/IsaacSchemm/ArtworkUploader";
 			linkLabel1.LinkClicked += linkLabel1_LinkClicked;
 			// 
 			// textBox1
@@ -64,7 +64,7 @@
 			textBox1.Name = "textBox1";
 			textBox1.ReadOnly = true;
 			textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			textBox1.Size = new System.Drawing.Size(536, 306);
+			textBox1.Size = new System.Drawing.Size(535, 250);
 			textBox1.TabIndex = 2;
 			textBox1.Text = resources.GetString("textBox1.Text");
 			// 
@@ -72,7 +72,7 @@
 			// 
 			btnOk.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
 			btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-			btnOk.Location = new System.Drawing.Point(463, 376);
+			btnOk.Location = new System.Drawing.Point(462, 320);
 			btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			btnOk.Name = "btnOk";
 			btnOk.Size = new System.Drawing.Size(88, 27);
@@ -85,14 +85,15 @@
 			AcceptButton = btnOk;
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			ClientSize = new System.Drawing.Size(565, 417);
+			ClientSize = new System.Drawing.Size(564, 361);
 			Controls.Add(btnOk);
 			Controls.Add(textBox1);
 			Controls.Add(linkLabel1);
 			Controls.Add(label1);
+			Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 			Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			Name = "AboutForm";
-			Text = "AboutForm";
+			Text = "About";
 			ResumeLayout(false);
 			PerformLayout();
 		}
