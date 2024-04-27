@@ -78,7 +78,8 @@ namespace ArtworkUploader {
 				if (ex is System.Net.WebException w) {
 					using var s = w.Response.GetResponseStream();
 					using var sr = new System.IO.StreamReader(s);
-					Console.WriteLine(await sr.ReadToEndAsync());
+					string str = await sr.ReadToEndAsync();
+					Console.WriteLine(str);
 				}
 				MessageBox.Show(this, ex.Message, ex.GetType().Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}

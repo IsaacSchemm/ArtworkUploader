@@ -51,7 +51,6 @@ namespace ArtworkUploader.FurAffinity {
 
 		private async void Form_Shown(object sender, EventArgs e) {
 			PopulateDescription();
-			await PopulateIcon();
 
 			using (var ms = new MemoryStream(_downloaded.Data, false))
 			using (var image = Image.FromStream(ms)) {
@@ -77,14 +76,6 @@ namespace ArtworkUploader.FurAffinity {
 				txtDescription.Text = HtmlConversion.ConvertHtmlToText(_post.HTMLDescription);
 			} catch (Exception) { }
 			txtDescription.Enabled = true;
-		}
-
-		private async Task PopulateIcon() {
-			try {
-				var user = await FAExportArtworkSource.GetCurrentProfileAsync($"b={_credentials.B}; a={_credentials.A}", false);
-				lblUsername1.Text = user.name;
-				picUserIcon.ImageLocation = user.avatar;
-			} catch (Exception) { }
 		}
 
 		private async void btnPost_Click(object sender, EventArgs e) {

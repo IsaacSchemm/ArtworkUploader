@@ -24,10 +24,4 @@ namespace ArtworkSourceSpecification {
 	}
 
 	public interface IDownloadedData : DeviantArtFs.Api.Stash.IFormFile { }
-
-	public interface IArtworkSource {
-		string Name { get; }
-		Task<IAuthor> GetUserAsync();
-		IAsyncEnumerable<IPostBase> GetPostsAsync();
-    }
 }
