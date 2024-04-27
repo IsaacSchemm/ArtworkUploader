@@ -79,7 +79,7 @@
 			splitContainer1.Panel2.Controls.Add(txtTitle);
 			splitContainer1.Panel2.Controls.Add(lblTitle);
 			splitContainer1.Size = new System.Drawing.Size(518, 450);
-			splitContainer1.SplitterDistance = 202;
+			splitContainer1.SplitterDistance = 201;
 			splitContainer1.SplitterWidth = 5;
 			splitContainer1.TabIndex = 0;
 			// 
@@ -89,7 +89,7 @@
 			pictureBox1.Location = new System.Drawing.Point(0, 0);
 			pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			pictureBox1.Name = "pictureBox1";
-			pictureBox1.Size = new System.Drawing.Size(518, 202);
+			pictureBox1.Size = new System.Drawing.Size(518, 201);
 			pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
@@ -154,9 +154,10 @@
 			lblDescription.Location = new System.Drawing.Point(68, 32);
 			lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblDescription.Name = "lblDescription";
-			lblDescription.Size = new System.Drawing.Size(67, 15);
+			lblDescription.Size = new System.Drawing.Size(67, 30);
 			lblDescription.TabIndex = 2;
-			lblDescription.Text = "Description";
+			lblDescription.Text = "Description\r\n(HTML)";
+			lblDescription.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// txtTitle
 			// 
@@ -179,11 +180,11 @@
 			// 
 			// btnPost
 			// 
-			btnPost.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			btnPost.Location = new System.Drawing.Point(41, 409);
+			btnPost.Dock = System.Windows.Forms.DockStyle.Bottom;
+			btnPost.Location = new System.Drawing.Point(0, 402);
 			btnPost.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			btnPost.Name = "btnPost";
-			btnPost.Size = new System.Drawing.Size(82, 27);
+			btnPost.Size = new System.Drawing.Size(163, 48);
 			btnPost.TabIndex = 9;
 			btnPost.Text = "Post";
 			btnPost.UseVisualStyleBackColor = true;
@@ -244,7 +245,7 @@
 			// mainWindowAccountSetupToolStripMenuItem
 			// 
 			mainWindowAccountSetupToolStripMenuItem.Name = "mainWindowAccountSetupToolStripMenuItem";
-			mainWindowAccountSetupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			mainWindowAccountSetupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			mainWindowAccountSetupToolStripMenuItem.Text = "&Account Setup";
 			mainWindowAccountSetupToolStripMenuItem.Click += mainWindowAccountSetupToolStripMenuItem_Click;
 			// 
@@ -264,8 +265,8 @@
 			// 
 			// panel1
 			// 
-			panel1.Controls.Add(btnPost);
 			panel1.Controls.Add(listBox1);
+			panel1.Controls.Add(btnPost);
 			panel1.Dock = System.Windows.Forms.DockStyle.Right;
 			panel1.Location = new System.Drawing.Point(518, 24);
 			panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -275,14 +276,14 @@
 			// 
 			// listBox1
 			// 
-			listBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+			listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
 			listBox1.FormattingEnabled = true;
 			listBox1.IntegralHeight = false;
 			listBox1.ItemHeight = 15;
 			listBox1.Location = new System.Drawing.Point(0, 0);
 			listBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			listBox1.Name = "listBox1";
-			listBox1.Size = new System.Drawing.Size(163, 395);
+			listBox1.Size = new System.Drawing.Size(163, 402);
 			listBox1.TabIndex = 1;
 			listBox1.DoubleClick += listBox1_DoubleClick;
 			// 
