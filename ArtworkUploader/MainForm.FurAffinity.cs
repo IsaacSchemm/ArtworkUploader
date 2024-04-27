@@ -17,7 +17,7 @@ namespace ArtworkUploader {
 						a = f.ACookie,
 						b = f.BCookie
 					};
-					newSettings.username = await FAExportArtworkSource.GetUsernameAsync($"b={f.BCookie}; a={f.ACookie}", false);
+					newSettings.username = await FurAffinityFs.FurAffinity.WhoamiAsync(newSettings);
 					yield return newSettings;
 				}
 			}
