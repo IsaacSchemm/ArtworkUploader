@@ -15,15 +15,7 @@ namespace ArtworkUploader {
 	public partial class ArtworkForm : Form {
 		private PostImage _loadedFile = null;
 
-		private class DestinationOption {
-			public readonly string Name;
-			public readonly Action Click;
-
-			public DestinationOption(string name, Action click) {
-				Name = name;
-				Click = click;
-			}
-
+		private record DestinationOption(string Name, Action Click) {
 			public override string ToString() {
 				return Name;
 			}
@@ -158,7 +150,7 @@ namespace ArtworkUploader {
 				using var f = new DeviantArtAuthorizationCodeForm(
 					OAuthConsumer.DeviantArt.CLIENT_ID,
 					new Uri("https://www.example.com"),
-					new[] { "browse", "user", "stash", "publish", "user.manage" });
+					["browse", "user", "stash", "publish", "user.manage"]);
 				f.Width = 525;
 				f.Height = 800;
 				if (f.ShowDialog(this) == DialogResult.OK) {
@@ -187,7 +179,7 @@ namespace ArtworkUploader {
 		private void furAffinityToolStripMenuItem_Click(object sender, EventArgs e) {
 			toolsToolStripMenuItem.Enabled = false;
 
-			async IAsyncEnumerable<Settings.FurAffinitySettings> promptForCredentials() {
+			static async IAsyncEnumerable<Settings.FurAffinitySettings> promptForCredentials() {
 				using var f = new FurAffinityLoginForm();
 				f.Text = "Log In - FurAffinity";
 				if (f.ShowDialog() == DialogResult.OK) {
@@ -214,7 +206,7 @@ namespace ArtworkUploader {
 		private void weasylToolStripMenuItem_Click(object sender, EventArgs e) {
 			toolsToolStripMenuItem.Enabled = false;
 
-			async IAsyncEnumerable<Settings.WeasylSettings> promptForCredentials() {
+			static async IAsyncEnumerable<Settings.WeasylSettings> promptForCredentials() {
 				using var f = new UsernamePasswordDialog();
 				f.UsernameLabel = "API Key";
 				f.ShowPassword = false;

@@ -16,7 +16,7 @@ namespace ArtworkUploader {
 			public string Username { get; set; }
 		}
 
-		public List<DeviantArtAccountSettings> DeviantArtAccounts = new();
+		public List<DeviantArtAccountSettings> DeviantArtAccounts = [];
 
 		public IEnumerable<DeviantArtTokenWrapper> DeviantArtTokens =>
 			DeviantArtAccounts.Select(x => new DeviantArtTokenWrapper(this, x));
@@ -32,7 +32,7 @@ namespace ArtworkUploader {
 			readonly string FurAffinityFs.FurAffinity.ICredentials.B => b;
 		}
 
-		public List<FurAffinitySettings> FurAffinity = new();
+		public List<FurAffinitySettings> FurAffinity = [];
 
 		public struct WeasylSettings : IAccountCredentials {
 			public string username;
@@ -41,7 +41,7 @@ namespace ArtworkUploader {
 			readonly string IAccountCredentials.Username => username;
 		}
 
-		public List<WeasylSettings> WeasylApi = new();
+		public List<WeasylSettings> WeasylApi = [];
 
 		public static Settings Load(string filename = "ArtworkUploader.json") {
 			Settings s = new();

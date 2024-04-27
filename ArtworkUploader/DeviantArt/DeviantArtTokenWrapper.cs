@@ -2,35 +2,22 @@
 using System.Threading.Tasks;
 
 namespace ArtworkUploader.DeviantArt {
-	public class DeviantArtTokenWrapper : IDeviantArtRefreshableAccessToken {
-		private readonly Settings _parent;
-		private Settings.DeviantArtAccountSettings _current;
+	public class DeviantArtTokenWrapper(Settings parent, Settings.DeviantArtAccountSettings current) : IDeviantArtRefreshableAccessToken {
+		public static DeviantArtApp App => new(
+			OAuthConsumer.DeviantArt.CLIENT_ID.ToString(),
+			OAuthConsumer.DeviantArt.CLIENT_SECRET);
 
-		public DeviantArtTokenWrapper(Settings parent, Settings.DeviantArtAccountSettings current) {
-			_parent = parent;
-			_current = current;
-		}
+		public string RefreshToken => current.RefreshToken;
+		public string AccessToken => current.AccessToken;
+		public string Username => current.Username;
 
-		public DeviantArtApp App =>
-			new DeviantArtApp(OAuthConsumer.DeviantArt.CLIENT_ID.ToString(), OAuthConsumer.DeviantArt.CLIENT_SECRET);
-
-		public string RefreshToken => _current.RefreshToken;
-		public string AccessToken => _current.AccessToken;
-		public string Username => _current.Username;
-
-		private class AccessTokenOnly : IDeviantArtAccessToken {
-			public string AccessToken { get; private set; }
-
-			public AccessTokenOnly(string token) {
-				AccessToken = token;
-			}
-		}
+		private record AccessTokenOnly(string AccessToken) : IDeviantArtAccessToken;
 
 		async Task IDeviantArtRefreshableAccessToken.RefreshAccessTokenAsync() {
 			var resp = await DeviantArtAuth.RefreshAsync(App, RefreshToken);
-			_current.AccessToken = resp.access_token;
-			_current.RefreshToken = resp.refresh_token;
-			_parent.Save();
+			current.AccessToken = resp.access_token;
+			current.RefreshToken = resp.refresh_token;
+			parent.Save();
 		}
 	}
 }

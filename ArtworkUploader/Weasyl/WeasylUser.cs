@@ -1,6 +1,5 @@
 ﻿namespace ArtworkUploader.Weasyl {
-	public class WeasylUser {
-		public string login;
-		public int userid;
-	}
+	public record WeasylUser(
+		string login,
+		int userid);
 }

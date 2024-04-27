@@ -24,9 +24,9 @@ namespace ArtworkUploader.FurAffinity {
 
 				var cks = CppCookieTools.Cookies.GetCookies("https://www.furaffinity.net");
 				var dict = cks.ToDictionary(x => x.Name, x => x.Value);
-				if (dict.ContainsKey("a") && dict.ContainsKey("b")) {
-					ACookie = dict["a"];
-					BCookie = dict["b"];
+				if (dict.TryGetValue("a", out string a) && dict.TryGetValue("b", out string b)) {
+					ACookie = a;
+					BCookie = b;
 					DialogResult = DialogResult.OK;
 				}
 			};

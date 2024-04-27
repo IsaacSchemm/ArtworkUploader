@@ -1,26 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ArtworkUploader {
 	public partial class AccountSelectionForm<T> : Form where T : Settings.IAccountCredentials {
-		private class MenuItem {
+		private record MenuItem(T Account) {
 			public string Username => Account.Username ?? Account.ToString();
-			public T Account;
-
-			public MenuItem(T account) {
-				Account = account;
-			}
 		}
 
-		private Func<IAsyncEnumerable<T>> OnAdd;
-		private Action<T> OnRemove;
+		private readonly Func<IAsyncEnumerable<T>> OnAdd;
+		private readonly Action<T> OnRemove;
 
 		public IEnumerable<T> CurrentList {
 			get {

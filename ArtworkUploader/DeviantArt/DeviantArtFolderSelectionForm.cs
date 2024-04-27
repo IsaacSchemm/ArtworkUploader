@@ -11,13 +11,13 @@ namespace ArtworkUploader.DeviantArt {
 		public IEnumerable<GalleryFolder> InitialFolders { get; set; }
 
 		private readonly IDeviantArtAccessToken _token;
-		private List<GalleryFolder> _selectedFolders;
+		private readonly List<GalleryFolder> _selectedFolders;
 		public IEnumerable<GalleryFolder> SelectedFolders => _selectedFolders;
 
 		public DeviantArtFolderSelectionForm(IDeviantArtAccessToken token) {
 			InitializeComponent();
 			_token = token;
-			_selectedFolders = new List<GalleryFolder>();
+			_selectedFolders = [];
 		}
 
 		private async void DeviantArtFolderSelectionForm_Load(object sender, EventArgs e) {

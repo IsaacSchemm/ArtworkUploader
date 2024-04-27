@@ -51,7 +51,7 @@ namespace ArtworkUploader.DeviantArt {
 
 			txtTitle.Text = post.Title ?? "";
 			txtArtistComments.Text = post.HTMLDescription ?? "";
-			txtTags.Text = string.Join(" ", post.Tags?.Select(s => $"#{s}") ?? Enumerable.Empty<string>());
+			txtTags.Text = string.Join(" ", post.Tags?.Select(s => $"#{s}") ?? []);
 			if (post.Mature) {
 				radStrict.Checked = true;
 			} else {

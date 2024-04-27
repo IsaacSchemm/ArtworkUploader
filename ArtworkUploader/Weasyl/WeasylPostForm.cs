@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
@@ -40,7 +38,7 @@ namespace ArtworkUploader.Weasyl {
 				}
 				lblUsername1.Text = user.login;
 
-				var folders = await _frontendClient.GetFoldersAsync();
+				var folders = await _frontendClient.GetFoldersAsync().ToListAsync();
 				ddlFolder.Items.Add("");
 				foreach (var f in folders) ddlFolder.Items.Add(f);
 			} catch (Exception) { }
@@ -49,14 +47,14 @@ namespace ArtworkUploader.Weasyl {
 		private async void btnPost_Click(object sender, EventArgs e) {
 			btnPost.Enabled = false;
 			try {
-				if (!(ddlCategory.SelectedItem is WeasylClient.SubmissionType subtype)) {
+				if (ddlCategory.SelectedItem is not WeasylClient.SubmissionType subtype) {
 					throw new Exception("A category is required.");
 				}
-				if (!(ddlRating.SelectedItem is WeasylClient.Rating rating)) {
+				if (ddlRating.SelectedItem is not WeasylClient.Rating rating) {
 					throw new Exception("A rating is required.");
 				}
 
-				var folder = ddlFolder.SelectedItem as WeasylClient.Folder?;
+				var folder = ddlFolder.SelectedItem as WeasylClient.Folder;
 
 				await _frontendClient.UploadVisualAsync(
 					_downloaded.Data,

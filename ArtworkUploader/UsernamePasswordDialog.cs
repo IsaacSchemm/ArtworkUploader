@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ArtworkUploader {
+	[Obsolete("Should be replaced with Weasyl-specific form")]
 	public partial class UsernamePasswordDialog : Form {
 		public string Username => txtUsername.Text;
 		public string Password => txtPassword.Text;

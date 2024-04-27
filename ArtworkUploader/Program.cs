@@ -10,14 +10,11 @@ namespace ArtworkUploader {
 		static void Main(string[] args) {
 			CppCookieTools.Cookies.SetSuppressBehaviorForProcess(CppCookieTools.SuppressBehavior.CookiePersist);
 			Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			if (args.Length == 1) {
-				try {
-					Application.Run(new ArtworkForm(args[0]));
-				} catch (Exception ex) {
-					MessageBox.Show(ex.Message, ex.GetType().Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
+				Application.Run(new ArtworkForm(args[0]));
 			} else {
 				Application.Run(new ArtworkForm());
 			}
