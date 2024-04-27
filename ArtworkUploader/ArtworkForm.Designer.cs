@@ -42,13 +42,13 @@
 			exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			mainWindowAccountSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			deviantArtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			furAffinityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			weasylToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			panel1 = new System.Windows.Forms.Panel();
 			listBox1 = new System.Windows.Forms.ListBox();
-			deviantArtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			furAffinityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			weasylToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
 			splitContainer1.Panel1.SuspendLayout();
 			splitContainer1.Panel2.SuspendLayout();
@@ -103,14 +103,14 @@
 			wbrDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			wbrDescription.MinimumSize = new System.Drawing.Size(23, 23);
 			wbrDescription.Name = "wbrDescription";
-			wbrDescription.Size = new System.Drawing.Size(367, 142);
+			wbrDescription.Size = new System.Drawing.Size(367, 141);
 			wbrDescription.TabIndex = 12;
 			// 
 			// chkAdult
 			// 
 			chkAdult.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			chkAdult.AutoSize = true;
-			chkAdult.Location = new System.Drawing.Point(219, 209);
+			chkAdult.Location = new System.Drawing.Point(219, 208);
 			chkAdult.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkAdult.Name = "chkAdult";
 			chkAdult.Size = new System.Drawing.Size(55, 19);
@@ -122,7 +122,7 @@
 			// 
 			chkMature.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			chkMature.AutoSize = true;
-			chkMature.Location = new System.Drawing.Point(143, 209);
+			chkMature.Location = new System.Drawing.Point(143, 208);
 			chkMature.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkMature.Name = "chkMature";
 			chkMature.Size = new System.Drawing.Size(64, 19);
@@ -133,7 +133,7 @@
 			// txtTags
 			// 
 			txtTags.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			txtTags.Location = new System.Drawing.Point(143, 180);
+			txtTags.Location = new System.Drawing.Point(143, 179);
 			txtTags.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtTags.Name = "txtTags";
 			txtTags.Size = new System.Drawing.Size(367, 23);
@@ -143,7 +143,7 @@
 			// 
 			lblTags.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			lblTags.AutoSize = true;
-			lblTags.Location = new System.Drawing.Point(105, 183);
+			lblTags.Location = new System.Drawing.Point(105, 182);
 			lblTags.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblTags.Name = "lblTags";
 			lblTags.Size = new System.Drawing.Size(30, 15);
@@ -183,10 +183,10 @@
 			// btnPost
 			// 
 			btnPost.Dock = System.Windows.Forms.DockStyle.Bottom;
-			btnPost.Location = new System.Drawing.Point(0, 402);
+			btnPost.Location = new System.Drawing.Point(0, 426);
 			btnPost.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			btnPost.Name = "btnPost";
-			btnPost.Size = new System.Drawing.Size(163, 48);
+			btnPost.Size = new System.Drawing.Size(163, 24);
 			btnPost.TabIndex = 9;
 			btnPost.Text = "Post";
 			btnPost.UseVisualStyleBackColor = true;
@@ -241,8 +241,29 @@
 			// 
 			mainWindowAccountSetupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { deviantArtToolStripMenuItem, furAffinityToolStripMenuItem, weasylToolStripMenuItem });
 			mainWindowAccountSetupToolStripMenuItem.Name = "mainWindowAccountSetupToolStripMenuItem";
-			mainWindowAccountSetupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			mainWindowAccountSetupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			mainWindowAccountSetupToolStripMenuItem.Text = "&Account Setup";
+			// 
+			// deviantArtToolStripMenuItem
+			// 
+			deviantArtToolStripMenuItem.Name = "deviantArtToolStripMenuItem";
+			deviantArtToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			deviantArtToolStripMenuItem.Text = "&DeviantArt";
+			deviantArtToolStripMenuItem.Click += deviantArtToolStripMenuItem_Click;
+			// 
+			// furAffinityToolStripMenuItem
+			// 
+			furAffinityToolStripMenuItem.Name = "furAffinityToolStripMenuItem";
+			furAffinityToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			furAffinityToolStripMenuItem.Text = "&Fur Affinity";
+			furAffinityToolStripMenuItem.Click += furAffinityToolStripMenuItem_Click;
+			// 
+			// weasylToolStripMenuItem
+			// 
+			weasylToolStripMenuItem.Name = "weasylToolStripMenuItem";
+			weasylToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+			weasylToolStripMenuItem.Text = "&Weasyl";
+			weasylToolStripMenuItem.Click += weasylToolStripMenuItem_Click;
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -254,7 +275,7 @@
 			// aboutToolStripMenuItem
 			// 
 			aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
 			aboutToolStripMenuItem.Text = "&About";
 			aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
 			// 
@@ -278,30 +299,9 @@
 			listBox1.Location = new System.Drawing.Point(0, 0);
 			listBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			listBox1.Name = "listBox1";
-			listBox1.Size = new System.Drawing.Size(163, 402);
+			listBox1.Size = new System.Drawing.Size(163, 426);
 			listBox1.TabIndex = 1;
 			listBox1.DoubleClick += listBox1_DoubleClick;
-			// 
-			// deviantArtToolStripMenuItem
-			// 
-			deviantArtToolStripMenuItem.Name = "deviantArtToolStripMenuItem";
-			deviantArtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			deviantArtToolStripMenuItem.Text = "&DeviantArt";
-			deviantArtToolStripMenuItem.Click += deviantArtToolStripMenuItem_Click;
-			// 
-			// furAffinityToolStripMenuItem
-			// 
-			furAffinityToolStripMenuItem.Name = "furAffinityToolStripMenuItem";
-			furAffinityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			furAffinityToolStripMenuItem.Text = "&Fur Affinity";
-			furAffinityToolStripMenuItem.Click += furAffinityToolStripMenuItem_Click;
-			// 
-			// weasylToolStripMenuItem
-			// 
-			weasylToolStripMenuItem.Name = "weasylToolStripMenuItem";
-			weasylToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			weasylToolStripMenuItem.Text = "&Weasyl";
-			weasylToolStripMenuItem.Click += weasylToolStripMenuItem_Click;
 			// 
 			// ArtworkForm
 			// 

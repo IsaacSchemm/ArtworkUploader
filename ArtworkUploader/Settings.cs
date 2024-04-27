@@ -1,8 +1,9 @@
 ﻿using ArtworkUploader.DeviantArt;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ArtworkUploader {
 	public class Settings {
@@ -16,8 +17,9 @@ namespace ArtworkUploader {
 			public string Username { get; set; }
 		}
 
-		public List<DeviantArtAccountSettings> DeviantArtAccounts = [];
+		public List<DeviantArtAccountSettings> DeviantArtAccounts { get; set; } = [];
 
+		[JsonIgnore]
 		public IEnumerable<DeviantArtTokenWrapper> DeviantArtTokens =>
 			DeviantArtAccounts.Select(x => new DeviantArtTokenWrapper(this, x));
 
@@ -32,7 +34,7 @@ namespace ArtworkUploader {
 			readonly string FurAffinityFs.FurAffinity.ICredentials.B => b;
 		}
 
-		public List<FurAffinitySettings> FurAffinity = [];
+		public List<FurAffinitySettings> FurAffinity { get; set; } = [];
 
 		public struct WeasylSettings : IAccountCredentials {
 			public string username;
@@ -41,18 +43,23 @@ namespace ArtworkUploader {
 			readonly string IAccountCredentials.Username => username;
 		}
 
-		public List<WeasylSettings> WeasylApi = [];
+		public List<WeasylSettings> WeasylApi { get; set; } = [];
+
+		private static readonly JsonSerializerOptions SettingsSerializerOptions = new() {
+			IncludeFields = true,
+			WriteIndented = true
+		};
 
 		public static Settings Load(string filename = "ArtworkUploader.json") {
 			Settings s = new();
 			if (filename != null && File.Exists(filename)) {
-				s = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(filename));
+				s = JsonSerializer.Deserialize<Settings>(File.ReadAllText(filename), SettingsSerializerOptions);
 			}
 			return s;
 		}
 
 		public void Save() {
-			File.WriteAllText("ArtworkUploader.json", JsonConvert.SerializeObject(this, Formatting.Indented));
+			File.WriteAllText("ArtworkUploader.json", JsonSerializer.Serialize(this, SettingsSerializerOptions));
 		}
 	}
 }

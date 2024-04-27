@@ -81,27 +81,22 @@ namespace ArtworkUploader.FurAffinity {
 				byte[] data = _downloaded.Data.ToArray();
 				string contentType = _downloaded.ContentType;
 
-				using (var image = Image.FromFile(_downloaded.Filename)) {
-					contentType = image.RawFormat.Equals(ImageFormat.Png) ? "image/png"
-						: image.RawFormat.Equals(ImageFormat.Jpeg) ? "image/jpeg"
-						: image.RawFormat.Equals(ImageFormat.Gif) ? "image/gif"
-						: throw new ApplicationException("Only JPEG, GIF, and PNG images are supported.");
+				var image = _downloaded.Image;
 
-					if (chkRemoveTransparency.Checked) {
-						using var newImage = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
+				if (chkRemoveTransparency.Checked) {
+					using var newImage = new Bitmap(image.Width, image.Height, PixelFormat.Format24bppRgb);
 
-						using (var g = Graphics.FromImage(newImage)) {
-							g.FillRectangle(new SolidBrush(Color.White), 0, 0, image.Width, image.Height);
-							g.DrawImage(image, 0, 0, image.Width, image.Height);
-						}
-
-						using var msout = new MemoryStream();
-
-						newImage.Save(msout, ImageFormat.Png);
-
-						data = msout.ToArray();
-						contentType = "image/png";
+					using (var g = Graphics.FromImage(newImage)) {
+						g.FillRectangle(new SolidBrush(Color.White), 0, 0, image.Width, image.Height);
+						g.DrawImage(image, 0, 0, image.Width, image.Height);
 					}
+
+					using var msout = new MemoryStream();
+
+					newImage.Save(msout, ImageFormat.Png);
+
+					data = msout.ToArray();
+					contentType = "image/png";
 				}
 
 				IEnumerable<long> folderIds() {
