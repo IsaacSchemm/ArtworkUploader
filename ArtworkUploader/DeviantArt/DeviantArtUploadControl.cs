@@ -25,7 +25,7 @@ namespace ArtworkUploader.DeviantArt {
 			}
 		}
 
-		private LocalFile _downloaded;
+		private IFormFile _downloaded;
 
 		public string UploadedUrl { get; private set; }
 
@@ -46,7 +46,7 @@ namespace ArtworkUploader.DeviantArt {
 			ddlSharing.SelectedIndex = 0;
 		}
 
-		public void SetSubmission(TextPost post, LocalFile downloaded) {
+		public void SetSubmission(TextPost post, IFormFile downloaded) {
 			_downloaded = downloaded;
 
 			txtTitle.Text = post.Title ?? "";

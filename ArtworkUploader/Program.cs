@@ -19,7 +19,7 @@ namespace ArtworkUploader {
 					MessageBox.Show(ex.Message, ex.GetType().Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			} else {
-				Application.Run(new MainForm());
+				Application.Run(new ArtworkForm());
 			}
 		}
 	}
