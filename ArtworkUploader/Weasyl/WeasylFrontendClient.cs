@@ -77,7 +77,7 @@ namespace ArtworkUploader.Weasyl {
 			Explicit = 40,
 		}
 
-		public async Task<Uri> UploadVisualAsync(byte[] data, string title, SubmissionType subtype, int? folderid, Rating rating, string content, IEnumerable<string> tags) {
+		public async Task<Uri> UploadVisualAsync(ReadOnlyMemory<byte> data, string title, SubmissionType subtype, int? folderid, Rating rating, string content, IEnumerable<string> tags) {
 			string boundary = "--------------------" + Guid.NewGuid();
 
 			HttpWebRequest req = CreateRequest("https://www.weasyl.com/submit/visual");
@@ -89,7 +89,7 @@ namespace ArtworkUploader.Weasyl {
 				await sw.WriteLineAsync($"Content-Disposition: form-data; name=\"submitfile\"; filename=\"picture.dat\"");
 				sw.WriteLine();
 				sw.Flush();
-				stream.Write(data, 0, data.Length);
+				stream.Write(data.Span);
 				stream.Flush();
 				sw.WriteLine();
 

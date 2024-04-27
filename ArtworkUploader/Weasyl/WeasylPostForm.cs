@@ -10,9 +10,9 @@ namespace ArtworkUploader.Weasyl {
 	public partial class WeasylPostForm : Form {
 		private readonly WeasylClient _apiClient;
 		private readonly WeasylClient _frontendClient;
-		private readonly LocalFile _downloaded;
+		private readonly PostImage _downloaded;
 
-		public WeasylPostForm(Settings.WeasylSettings s, TextPost post, LocalFile downloaded) {
+		public WeasylPostForm(Settings.WeasylSettings s, PostMetadata post, PostImage downloaded) {
 			InitializeComponent();
 
 			_apiClient = _frontendClient = new WeasylClient(s.apiKey);
@@ -59,7 +59,7 @@ namespace ArtworkUploader.Weasyl {
 				var folder = ddlFolder.SelectedItem as WeasylClient.Folder?;
 
 				await _frontendClient.UploadVisualAsync(
-					File.ReadAllBytes(_downloaded.Filename),
+					_downloaded.Data,
 					txtTitle.Text,
 					subtype,
 					folder?.FolderId,

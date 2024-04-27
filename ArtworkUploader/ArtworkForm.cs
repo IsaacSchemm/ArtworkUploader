@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ArtworkUploader {
 	public partial class ArtworkForm : Form {
-		private LocalFile _loadedFile = null;
+		private PostImage _loadedFile = null;
 
 		private class DestinationOption {
 			public readonly string Name;
@@ -29,8 +29,8 @@ namespace ArtworkUploader {
 			}
 		}
 
-		public TextPost ExportAsText() {
-			return new TextPost {
+		public PostMetadata ExportAsText() {
+			return new PostMetadata {
 				Title = txtTitle.Text,
 				HTMLDescription = wbrDescription.Document.Body.InnerHtml,
 				Tags = ListModule.OfSeq(txtTags.Text.Split(' ').Where(s => s != "")),
@@ -52,7 +52,7 @@ namespace ArtworkUploader {
 		}
 
 		public void LoadImage(string filename) {
-			_loadedFile = new LocalFile(filename);
+			_loadedFile = new PostImage(filename);
 
 			var image = Image.FromFile(filename);
 			pictureBox1.Image = image;

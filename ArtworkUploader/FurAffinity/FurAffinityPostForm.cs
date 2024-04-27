@@ -11,10 +11,10 @@ using Fsfs = FurAffinityFs.FurAffinity;
 namespace ArtworkUploader.FurAffinity {
 	public partial class FurAffinityPostForm : Form {
 		private readonly Fsfs.ICredentials _credentials;
-		private readonly TextPost _post;
-		private readonly LocalFile _downloaded;
+		private readonly PostMetadata _post;
+		private readonly PostImage _downloaded;
 
-		public FurAffinityPostForm(Fsfs.ICredentials s, TextPost post, LocalFile downloaded) {
+		public FurAffinityPostForm(Fsfs.ICredentials s, PostMetadata post, PostImage downloaded) {
 			InitializeComponent();
 			_credentials = s;
 			_post = post;
@@ -50,9 +50,7 @@ namespace ArtworkUploader.FurAffinity {
 		private async void Form_Shown(object sender, EventArgs e) {
 			PopulateDescription();
 
-			using (var image = Image.FromFile(_downloaded.Filename)) {
-				chkRemoveTransparency.Enabled = HasAlpha(image);
-			}
+			chkRemoveTransparency.Enabled = HasAlpha(_downloaded.Image);
 
 			try {
 				var species = await Fsfs.ListSpeciesAsync();
