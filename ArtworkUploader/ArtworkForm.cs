@@ -1,9 +1,6 @@
 ﻿using ArtworkSourceSpecification;
 using ArtworkUploader.DeviantArt;
 using ArtworkUploader.FurAffinity;
-using ArtworkUploader.FurryNetwork;
-using ArtworkUploader.Inkbunny;
-using ArtworkUploader.Mastodon;
 using ArtworkUploader.Weasyl;
 using DeviantArtFs.Api;
 using Microsoft.FSharp.Collections;
@@ -59,10 +56,6 @@ namespace ArtworkUploader {
 			this.Shown += (o, e) => LoadImage(filename);
 		}
 
-		public ArtworkForm(IPostBase post) : this() {
-			this.Shown += (o, e) => LoadImage(post);
-		}
-
 		public record LocalFile(string Filename) : IDownloadedData {
 			string Stash.IFormFile.ContentType {
 				get {
@@ -77,75 +70,25 @@ namespace ArtworkUploader {
 			byte[] Stash.IFormFile.Data => File.ReadAllBytes(Filename);
 		}
 
-		public void LoadImage(string filename) => LoadImage(new LocalFile(filename));
-
-		public async void LoadImage(IPostBase artwork) {
-			IDownloadedData downloadedData;
-			try {
-				downloadedData = await Downloader.DownloadAsync(artwork);
-			} catch (WebException ex) {
-				MessageBox.Show(this, ex.Message);
-				downloadedData = null;
-			}
-
-			LoadImage(downloadedData,
-				title: artwork.Title,
-				htmlDescription: artwork.HTMLDescription,
-				tags: artwork.Tags,
-				mature: artwork.Mature,
-				adult: artwork.Adult,
-				relativeTo: Uri.TryCreate(artwork.ViewURL, UriKind.Absolute, out Uri u) ? u : null);
-		}
-
-		public void LoadImage(IDownloadedData downloadedData, string title = "", string htmlDescription = "", IEnumerable<string> tags = null, bool mature = false, bool adult = false, Uri relativeTo = null) {
-			_exportable = downloadedData;
+		public void LoadImage(string filename) {
+			var downloadedData = _exportable = new LocalFile(filename);
 
 			using var ms = new MemoryStream(downloadedData.Data, false);
 			pictureBox1.Image = Image.FromStream(ms);
 
-			txtTitle.Text = title;
+			txtTitle.Text = "";
 			wbrDescription.Navigate("about:blank");
-			wbrDescription.Document.Write($"<html><head></head><body>{htmlDescription}</body></html>");
+			wbrDescription.Document.Write($"<html><head></head><body></body></html>");
 			wbrDescription.Document.Body.SetAttribute("contenteditable", "true");
-			txtTags.Text = string.Join(" ", tags ?? Enumerable.Empty<string>());
-			chkMature.Checked = mature;
-			chkAdult.Checked = adult;
-
-			try {
-				if (relativeTo != null) {
-					var links = wbrDescription.Document.GetElementsByTagName("a");
-					for (int i = 0; i < links.Count; i++) {
-						var a = links[i];
-						string href = a.GetAttribute("href");
-						if (href.StartsWith("about:"))
-							href = href[6..];
-						if (Uri.TryCreate(href, UriKind.RelativeOrAbsolute, out Uri u2)) {
-							a.SetAttribute("href", new Uri(relativeTo, u2).AbsoluteUri);
-						}
-					}
-
-					var images = wbrDescription.Document.GetElementsByTagName("img");
-					for (int i = 0; i < images.Count; i++) {
-						var img = images[i];
-						string src = img.GetAttribute("src");
-						if (src.StartsWith("about:"))
-							src = src[6..];
-						if (Uri.TryCreate(src, UriKind.RelativeOrAbsolute, out Uri u2)) {
-							img.SetAttribute("src", new Uri(relativeTo, u2).AbsoluteUri);
-						}
-					}
-				}
-			} catch (Exception ex) {
-				Console.Error.WriteLine(ex);
-			}
+			txtTags.Text = "";
+			chkMature.Checked = false;
+			chkAdult.Checked = false;
 
 			Settings settings = Settings.Load();
 
 			exportAsToolStripMenuItem.Enabled = false;
 
 			if (downloadedData != null) {
-				listBox1.Items.Add("--- Post as photo ---");
-
 				exportAsToolStripMenuItem.Enabled = true;
 
 				foreach (var da in settings.DeviantArtTokens) {
@@ -175,38 +118,10 @@ namespace ArtworkUploader {
 
 						f.ShowDialog(this);
 					}));
-					listBox1.Items.Add(new DestinationOption($"DeviantArt status update ({da.Username})", () => {
-						using var f = new DeviantArtStatusUpdateForm(da, ExportAsText(), downloadedData);
-						f.ShowDialog(this);
-					}));
 				}
 				foreach (var fa in settings.FurAffinity) {
 					listBox1.Items.Add(new DestinationOption($"Fur Affinity ({fa.username})", () => {
 						using var f = new FurAffinityPostForm(fa, ExportAsText(), downloadedData);
-						f.ShowDialog(this);
-					}));
-				}
-				foreach (var fn in settings.FurryNetwork) {
-					listBox1.Items.Add(new DestinationOption($"Furry Network ({fn.characterName})", () => {
-						using var f = new FurryNetworkPostForm(fn, ExportAsText(), downloadedData);
-						f.ShowDialog(this);
-					}));
-				}
-				foreach (var i in settings.Inkbunny) {
-					listBox1.Items.Add(new DestinationOption($"Inkbunny ({i.username})", () => {
-						using var f = new InkbunnyPostForm(i, ExportAsText(), downloadedData);
-						f.ShowDialog(this);
-					}));
-				}
-				foreach (var m in settings.Pixelfed) {
-					listBox1.Items.Add(new DestinationOption($"{m.AppRegistration.Instance} ({m.Username})", () => {
-						using var f = new MastodonCwPostForm(m, ExportAsText(), downloadedData);
-						f.ShowDialog(this);
-					}));
-				}
-				foreach (var m in settings.Pleronet) {
-					listBox1.Items.Add(new DestinationOption($"{m.AppRegistration.Instance} ({m.Username})", () => {
-						using var f = new MastodonCwPostForm(m, ExportAsText(), downloadedData);
 						f.ShowDialog(this);
 					}));
 				}
@@ -218,27 +133,6 @@ namespace ArtworkUploader {
 					}));
 				}
 				listBox1.Items.Add("");
-			}
-
-			listBox1.Items.Add("--- Post as text ---");
-
-			foreach (var da in settings.DeviantArtTokens) {
-				listBox1.Items.Add(new DestinationOption($"DeviantArt status update ({da.Username})", () => {
-					using var f = new DeviantArtStatusUpdateForm(da, ExportAsText());
-					f.ShowDialog(this);
-				}));
-			}
-			foreach (var m in settings.Pixelfed) {
-				listBox1.Items.Add(new DestinationOption($"{m.AppRegistration.Instance} ({m.Username})", () => {
-					using var f = new MastodonCwPostForm(m, ExportAsText());
-					f.ShowDialog(this);
-				}));
-			}
-			foreach (var m in settings.Pleronet) {
-				listBox1.Items.Add(new DestinationOption($"{m.AppRegistration.Instance} ({m.Username})", () => {
-					using var f = new MastodonCwPostForm(m, ExportAsText());
-					f.ShowDialog(this);
-				}));
 			}
 		}
 
