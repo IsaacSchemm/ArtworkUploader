@@ -73,14 +73,14 @@ namespace ArtworkUploader {
 					using var f = new Form();
 
 					f.Width = 600;
-					f.Height = 350;
+					f.Height = 375;
 					var d = new DeviantArtUploadControl(da) {
 						Dock = DockStyle.Fill
 					};
 					f.Controls.Add(d);
 					d.Uploaded += url => f.Close();
 
-					d.SetSubmission(ExportAsText(), new LocalFile(filename), null);
+					d.SetSubmission(ExportAsText(), new LocalFile(filename));
 
 					f.ShowDialog(this);
 				}));

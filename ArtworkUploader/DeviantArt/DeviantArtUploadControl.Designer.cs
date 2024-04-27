@@ -40,7 +40,6 @@
 			chkSexual = new System.Windows.Forms.CheckBox();
 			chkNudity = new System.Windows.Forms.CheckBox();
 			chkAllowComments = new System.Windows.Forms.CheckBox();
-			chkRequestCritique = new System.Windows.Forms.CheckBox();
 			lblSharing = new System.Windows.Forms.Label();
 			ddlSharing = new System.Windows.Forms.ComboBox();
 			lblLicense = new System.Windows.Forms.Label();
@@ -51,8 +50,7 @@
 			chkAllowFreeDownload = new System.Windows.Forms.CheckBox();
 			btnPublish = new System.Windows.Forms.Button();
 			chkAgree = new System.Windows.Forms.CheckBox();
-			btnUpload = new System.Windows.Forms.Button();
-			lblUploadTo = new System.Windows.Forms.Label();
+			chkRequestCritique = new System.Windows.Forms.CheckBox();
 			grpMatureContent.SuspendLayout();
 			grpMatureClassification.SuspendLayout();
 			SuspendLayout();
@@ -74,7 +72,7 @@
 			txtArtistComments.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtArtistComments.Multiline = true;
 			txtArtistComments.Name = "txtArtistComments";
-			txtArtistComments.Size = new System.Drawing.Size(298, 207);
+			txtArtistComments.Size = new System.Drawing.Size(298, 178);
 			txtArtistComments.TabIndex = 3;
 			// 
 			// lblTitle
@@ -93,23 +91,23 @@
 			txtTitle.Location = new System.Drawing.Point(46, 3);
 			txtTitle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtTitle.Name = "txtTitle";
-			txtTitle.Size = new System.Drawing.Size(256, 23);
+			txtTitle.Size = new System.Drawing.Size(580, 23);
 			txtTitle.TabIndex = 1;
 			// 
 			// txtTags
 			// 
 			txtTags.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			txtTags.Location = new System.Drawing.Point(50, 270);
+			txtTags.Location = new System.Drawing.Point(97, 241);
 			txtTags.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtTags.Name = "txtTags";
-			txtTags.Size = new System.Drawing.Size(251, 23);
+			txtTags.Size = new System.Drawing.Size(529, 23);
 			txtTags.TabIndex = 10;
 			// 
 			// lblTags
 			// 
 			lblTags.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			lblTags.AutoSize = true;
-			lblTags.Location = new System.Drawing.Point(4, 273);
+			lblTags.Location = new System.Drawing.Point(4, 244);
 			lblTags.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblTags.Name = "lblTags";
 			lblTags.Size = new System.Drawing.Size(33, 15);
@@ -122,7 +120,7 @@
 			grpMatureContent.Controls.Add(radStrict);
 			grpMatureContent.Controls.Add(radModerate);
 			grpMatureContent.Controls.Add(radNone);
-			grpMatureContent.Location = new System.Drawing.Point(309, 3);
+			grpMatureContent.Location = new System.Drawing.Point(309, 32);
 			grpMatureContent.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			grpMatureContent.Name = "grpMatureContent";
 			grpMatureContent.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -175,7 +173,7 @@
 			grpMatureClassification.Controls.Add(chkSexual);
 			grpMatureClassification.Controls.Add(chkNudity);
 			grpMatureClassification.Enabled = false;
-			grpMatureClassification.Location = new System.Drawing.Point(309, 59);
+			grpMatureClassification.Location = new System.Drawing.Point(309, 88);
 			grpMatureClassification.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			grpMatureClassification.Name = "grpMatureClassification";
 			grpMatureClassification.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -187,7 +185,7 @@
 			// chkIdeology
 			// 
 			chkIdeology.AutoSize = true;
-			chkIdeology.Location = new System.Drawing.Point(135, 48);
+			chkIdeology.Location = new System.Drawing.Point(129, 47);
 			chkIdeology.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkIdeology.Name = "chkIdeology";
 			chkIdeology.Size = new System.Drawing.Size(141, 19);
@@ -198,7 +196,7 @@
 			// chkLanguage
 			// 
 			chkLanguage.AutoSize = true;
-			chkLanguage.Location = new System.Drawing.Point(7, 48);
+			chkLanguage.Location = new System.Drawing.Point(8, 47);
 			chkLanguage.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkLanguage.Name = "chkLanguage";
 			chkLanguage.Size = new System.Drawing.Size(113, 19);
@@ -209,7 +207,7 @@
 			// chkGore
 			// 
 			chkGore.AutoSize = true;
-			chkGore.Location = new System.Drawing.Point(197, 22);
+			chkGore.Location = new System.Drawing.Point(188, 22);
 			chkGore.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkGore.Name = "chkGore";
 			chkGore.Size = new System.Drawing.Size(100, 19);
@@ -220,7 +218,7 @@
 			// chkSexual
 			// 
 			chkSexual.AutoSize = true;
-			chkSexual.Location = new System.Drawing.Point(79, 22);
+			chkSexual.Location = new System.Drawing.Point(78, 22);
 			chkSexual.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkSexual.Name = "chkSexual";
 			chkSexual.Size = new System.Drawing.Size(102, 19);
@@ -231,7 +229,7 @@
 			// chkNudity
 			// 
 			chkNudity.AutoSize = true;
-			chkNudity.Location = new System.Drawing.Point(7, 22);
+			chkNudity.Location = new System.Drawing.Point(8, 22);
 			chkNudity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkNudity.Name = "chkNudity";
 			chkNudity.Size = new System.Drawing.Size(62, 19);
@@ -245,25 +243,13 @@
 			chkAllowComments.AutoSize = true;
 			chkAllowComments.Checked = true;
 			chkAllowComments.CheckState = System.Windows.Forms.CheckState.Checked;
-			chkAllowComments.Location = new System.Drawing.Point(310, 163);
+			chkAllowComments.Location = new System.Drawing.Point(436, 167);
 			chkAllowComments.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkAllowComments.Name = "chkAllowComments";
 			chkAllowComments.Size = new System.Drawing.Size(116, 19);
 			chkAllowComments.TabIndex = 7;
 			chkAllowComments.Text = "Allow comments";
 			chkAllowComments.UseVisualStyleBackColor = true;
-			// 
-			// chkRequestCritique
-			// 
-			chkRequestCritique.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-			chkRequestCritique.AutoSize = true;
-			chkRequestCritique.Location = new System.Drawing.Point(310, 188);
-			chkRequestCritique.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			chkRequestCritique.Name = "chkRequestCritique";
-			chkRequestCritique.Size = new System.Drawing.Size(111, 19);
-			chkRequestCritique.TabIndex = 8;
-			chkRequestCritique.Text = "Request critique";
-			chkRequestCritique.UseVisualStyleBackColor = true;
 			// 
 			// lblSharing
 			// 
@@ -282,17 +268,17 @@
 			ddlSharing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			ddlSharing.FormattingEnabled = true;
 			ddlSharing.Items.AddRange(new object[] { "Show share buttons", "Hide share buttons", "Hide & require login to view" });
-			ddlSharing.Location = new System.Drawing.Point(71, 299);
+			ddlSharing.Location = new System.Drawing.Point(97, 299);
 			ddlSharing.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			ddlSharing.Name = "ddlSharing";
-			ddlSharing.Size = new System.Drawing.Size(230, 23);
+			ddlSharing.Size = new System.Drawing.Size(205, 23);
 			ddlSharing.TabIndex = 15;
 			// 
 			// lblLicense
 			// 
 			lblLicense.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			lblLicense.AutoSize = true;
-			lblLicense.Location = new System.Drawing.Point(318, 302);
+			lblLicense.Location = new System.Drawing.Point(310, 302);
 			lblLicense.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblLicense.Name = "lblLicense";
 			lblLicense.Size = new System.Drawing.Size(49, 15);
@@ -301,20 +287,20 @@
 			// 
 			// ddlLicense
 			// 
-			ddlLicense.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+			ddlLicense.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			ddlLicense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			ddlLicense.FormattingEnabled = true;
 			ddlLicense.Items.AddRange(new object[] { "Default", "CC-BY", "CC-BY-SA", "CC-BY-ND", "CC-BY-NC", "CC-BY-NC-SA", "CC-BY-NC-ND" });
-			ddlLicense.Location = new System.Drawing.Point(414, 299);
+			ddlLicense.Location = new System.Drawing.Point(367, 299);
 			ddlLicense.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			ddlLicense.Name = "ddlLicense";
-			ddlLicense.Size = new System.Drawing.Size(212, 23);
+			ddlLicense.Size = new System.Drawing.Size(259, 23);
 			ddlLicense.TabIndex = 17;
 			// 
 			// btnGalleryFolders
 			// 
 			btnGalleryFolders.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-			btnGalleryFolders.Location = new System.Drawing.Point(596, 269);
+			btnGalleryFolders.Location = new System.Drawing.Point(596, 270);
 			btnGalleryFolders.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			btnGalleryFolders.Name = "btnGalleryFolders";
 			btnGalleryFolders.Size = new System.Drawing.Size(30, 23);
@@ -325,19 +311,19 @@
 			// 
 			// txtGalleryFolders
 			// 
-			txtGalleryFolders.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-			txtGalleryFolders.Location = new System.Drawing.Point(414, 269);
+			txtGalleryFolders.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+			txtGalleryFolders.Location = new System.Drawing.Point(97, 270);
 			txtGalleryFolders.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtGalleryFolders.Name = "txtGalleryFolders";
 			txtGalleryFolders.ReadOnly = true;
-			txtGalleryFolders.Size = new System.Drawing.Size(174, 23);
+			txtGalleryFolders.Size = new System.Drawing.Size(491, 23);
 			txtGalleryFolders.TabIndex = 12;
 			// 
 			// lblGalleryFolders
 			// 
-			lblGalleryFolders.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+			lblGalleryFolders.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			lblGalleryFolders.AutoSize = true;
-			lblGalleryFolders.Location = new System.Drawing.Point(318, 272);
+			lblGalleryFolders.Location = new System.Drawing.Point(4, 274);
 			lblGalleryFolders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblGalleryFolders.Name = "lblGalleryFolders";
 			lblGalleryFolders.Size = new System.Drawing.Size(85, 15);
@@ -350,7 +336,7 @@
 			chkAllowFreeDownload.AutoSize = true;
 			chkAllowFreeDownload.Checked = true;
 			chkAllowFreeDownload.CheckState = System.Windows.Forms.CheckState.Checked;
-			chkAllowFreeDownload.Location = new System.Drawing.Point(310, 138);
+			chkAllowFreeDownload.Location = new System.Drawing.Point(316, 167);
 			chkAllowFreeDownload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkAllowFreeDownload.Name = "chkAllowFreeDownload";
 			chkAllowFreeDownload.Size = new System.Drawing.Size(112, 19);
@@ -362,12 +348,12 @@
 			// 
 			btnPublish.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
 			btnPublish.AutoSize = true;
-			btnPublish.Location = new System.Drawing.Point(545, 328);
+			btnPublish.Location = new System.Drawing.Point(497, 328);
 			btnPublish.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			btnPublish.Name = "btnPublish";
-			btnPublish.Size = new System.Drawing.Size(82, 27);
+			btnPublish.Size = new System.Drawing.Size(129, 27);
 			btnPublish.TabIndex = 27;
-			btnPublish.Text = "DeviantArt";
+			btnPublish.Text = "Publish to DeviantArt";
 			btnPublish.UseVisualStyleBackColor = true;
 			btnPublish.Click += btnPublish_Click;
 			// 
@@ -383,36 +369,23 @@
 			chkAgree.Text = "Agree to the Submission Policy and Terms of Service";
 			chkAgree.UseVisualStyleBackColor = true;
 			// 
-			// btnUpload
+			// chkRequestCritique
 			// 
-			btnUpload.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-			btnUpload.AutoSize = true;
-			btnUpload.Location = new System.Drawing.Point(479, 328);
-			btnUpload.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			btnUpload.Name = "btnUpload";
-			btnUpload.Size = new System.Drawing.Size(58, 27);
-			btnUpload.TabIndex = 26;
-			btnUpload.Text = "Sta.sh";
-			btnUpload.UseVisualStyleBackColor = true;
-			btnUpload.Click += btnUpload_Click;
-			// 
-			// lblUploadTo
-			// 
-			lblUploadTo.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-			lblUploadTo.AutoSize = true;
-			lblUploadTo.Location = new System.Drawing.Point(407, 333);
-			lblUploadTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			lblUploadTo.Name = "lblUploadTo";
-			lblUploadTo.Size = new System.Drawing.Size(62, 15);
-			lblUploadTo.TabIndex = 25;
-			lblUploadTo.Text = "Upload to:";
+			chkRequestCritique.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+			chkRequestCritique.AutoSize = true;
+			chkRequestCritique.Location = new System.Drawing.Point(316, 192);
+			chkRequestCritique.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+			chkRequestCritique.Name = "chkRequestCritique";
+			chkRequestCritique.Size = new System.Drawing.Size(111, 19);
+			chkRequestCritique.TabIndex = 28;
+			chkRequestCritique.Text = "Request critique";
+			chkRequestCritique.UseVisualStyleBackColor = true;
 			// 
 			// DeviantArtUploadControl
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			Controls.Add(lblUploadTo);
-			Controls.Add(btnUpload);
+			Controls.Add(chkRequestCritique);
 			Controls.Add(chkAgree);
 			Controls.Add(btnPublish);
 			Controls.Add(chkAllowFreeDownload);
@@ -423,7 +396,6 @@
 			Controls.Add(lblLicense);
 			Controls.Add(ddlSharing);
 			Controls.Add(lblSharing);
-			Controls.Add(chkRequestCritique);
 			Controls.Add(chkAllowComments);
 			Controls.Add(grpMatureClassification);
 			Controls.Add(grpMatureContent);
@@ -462,7 +434,6 @@
 		private System.Windows.Forms.CheckBox chkSexual;
 		private System.Windows.Forms.CheckBox chkNudity;
 		private System.Windows.Forms.CheckBox chkAllowComments;
-		private System.Windows.Forms.CheckBox chkRequestCritique;
 		private System.Windows.Forms.Label lblSharing;
 		private System.Windows.Forms.ComboBox ddlSharing;
 		private System.Windows.Forms.Label lblLicense;
@@ -473,7 +444,6 @@
 		private System.Windows.Forms.CheckBox chkAllowFreeDownload;
 		private System.Windows.Forms.Button btnPublish;
 		private System.Windows.Forms.CheckBox chkAgree;
-		private System.Windows.Forms.Button btnUpload;
-		private System.Windows.Forms.Label lblUploadTo;
+		private System.Windows.Forms.CheckBox chkRequestCritique;
 	}
 }

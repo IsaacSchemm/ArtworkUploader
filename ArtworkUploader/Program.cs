@@ -9,11 +9,7 @@ namespace ArtworkUploader {
 		[STAThread]
 		static void Main(string[] args) {
 			CppCookieTools.Cookies.SetSuppressBehaviorForProcess(CppCookieTools.SuppressBehavior.CookiePersist);
-			IECompatibility.SetForCurrentProcess();
-
-			// Force current directory (if a file or folder was dragged onto ArtworkUploader.exe)
 			Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			if (args.Length == 1) {

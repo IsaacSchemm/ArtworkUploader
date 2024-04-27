@@ -15,7 +15,7 @@ namespace ArtworkUploader {
 					OAuthConsumer.DeviantArt.CLIENT_ID,
 					new Uri("https://www.example.com"),
 					new[] { "browse", "user", "stash", "publish", "user.manage" });
-				f.Width = 1000;
+				f.Width = 525;
 				f.Height = 800;
 				if (f.ShowDialog(this) == DialogResult.OK) {
 					var a = new DeviantArtApp(OAuthConsumer.DeviantArt.CLIENT_ID.ToString(), OAuthConsumer.DeviantArt.CLIENT_SECRET);
