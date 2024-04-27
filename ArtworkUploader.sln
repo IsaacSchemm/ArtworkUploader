@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrosspostSharp3", "CrosspostSharp3\CrosspostSharp3.csproj", "{4AE5E506-8529-4DCB-BFFD-E23EDD234ADD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrosspostSharp3", "ArtworkUploader\CrosspostSharp3.csproj", "{4AE5E506-8529-4DCB-BFFD-E23EDD234ADD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppCookieTools", "CppCookieTools\CppCookieTools.vcxproj", "{36D78D78-10D0-4765-BBB1-B92370910C86}"
 EndProject
