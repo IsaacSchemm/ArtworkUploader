@@ -1,24 +1,16 @@
-﻿using ArtworkSourceSpecification;
-using DeviantArtFs;
+﻿using DeviantArtFs;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ArtworkUploader.DeviantArt {
 	public partial class DeviantArtStatusUpdateForm : Form {
-		private readonly IDownloadedData _downloaded;
+		private readonly LocalFile _downloaded;
 
 		private readonly IDeviantArtAccessToken _token;
 
-		public DeviantArtStatusUpdateForm(IDeviantArtAccessToken token, TextPost post, IDownloadedData downloaded = null) {
+		public DeviantArtStatusUpdateForm(IDeviantArtAccessToken token, TextPost post, LocalFile downloaded = null) {
 			InitializeComponent();
 			_token = token;
 			_downloaded = downloaded;
@@ -29,9 +21,7 @@ namespace ArtworkUploader.DeviantArt {
 		private async void DeviantArtStatusUpdateForm_Shown(object sender, EventArgs e) {
 			try {
 				if (_downloaded != null) {
-					using (var ms = new MemoryStream(_downloaded.Data, false)) {
-						picImageToPost.Image = Image.FromStream(ms);
-					}
+					picImageToPost.Image = Image.FromFile(_downloaded.Filename);
 				} else {
 					picImageToPost.Visible = false;
 				}

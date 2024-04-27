@@ -30,9 +30,7 @@
 			lblTitle = new System.Windows.Forms.Label();
 			txtTitle = new System.Windows.Forms.TextBox();
 			lblDescription = new System.Windows.Forms.Label();
-			picUserIcon = new System.Windows.Forms.PictureBox();
 			lblUsername1 = new System.Windows.Forms.Label();
-			lblUsername2 = new System.Windows.Forms.Label();
 			lblCategory = new System.Windows.Forms.Label();
 			ddlCategory = new System.Windows.Forms.ComboBox();
 			chkScraps = new System.Windows.Forms.CheckBox();
@@ -50,7 +48,6 @@
 			chkRemoveTransparency = new System.Windows.Forms.CheckBox();
 			groupBox1 = new System.Windows.Forms.GroupBox();
 			listBox1 = new System.Windows.Forms.ListBox();
-			((System.ComponentModel.ISupportInitialize)picUserIcon).BeginInit();
 			groupBox3.SuspendLayout();
 			groupBox1.SuspendLayout();
 			SuspendLayout();
@@ -59,18 +56,18 @@
 			// 
 			txtDescription.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			txtDescription.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			txtDescription.Location = new System.Drawing.Point(14, 136);
+			txtDescription.Location = new System.Drawing.Point(14, 92);
 			txtDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtDescription.Multiline = true;
 			txtDescription.Name = "txtDescription";
 			txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			txtDescription.Size = new System.Drawing.Size(293, 161);
+			txtDescription.Size = new System.Drawing.Size(293, 107);
 			txtDescription.TabIndex = 5;
 			// 
 			// btnPost
 			// 
 			btnPost.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-			btnPost.Location = new System.Drawing.Point(580, 376);
+			btnPost.Location = new System.Drawing.Point(580, 277);
 			btnPost.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			btnPost.Name = "btnPost";
 			btnPost.Size = new System.Drawing.Size(88, 27);
@@ -83,7 +80,7 @@
 			// 
 			lblKeywords.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			lblKeywords.AutoSize = true;
-			lblKeywords.Location = new System.Drawing.Point(14, 301);
+			lblKeywords.Location = new System.Drawing.Point(14, 202);
 			lblKeywords.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblKeywords.Name = "lblKeywords";
 			lblKeywords.Size = new System.Drawing.Size(153, 15);
@@ -93,7 +90,7 @@
 			// txtTags
 			// 
 			txtTags.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			txtTags.Location = new System.Drawing.Point(14, 320);
+			txtTags.Location = new System.Drawing.Point(14, 221);
 			txtTags.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtTags.Name = "txtTags";
 			txtTags.Size = new System.Drawing.Size(293, 23);
@@ -102,7 +99,7 @@
 			// lblTitle
 			// 
 			lblTitle.AutoSize = true;
-			lblTitle.Location = new System.Drawing.Point(14, 73);
+			lblTitle.Location = new System.Drawing.Point(14, 29);
 			lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblTitle.Name = "lblTitle";
 			lblTitle.Size = new System.Drawing.Size(29, 15);
@@ -112,7 +109,7 @@
 			// txtTitle
 			// 
 			txtTitle.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			txtTitle.Location = new System.Drawing.Point(14, 91);
+			txtTitle.Location = new System.Drawing.Point(14, 47);
 			txtTitle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtTitle.Name = "txtTitle";
 			txtTitle.Size = new System.Drawing.Size(293, 23);
@@ -121,50 +118,29 @@
 			// lblDescription
 			// 
 			lblDescription.AutoSize = true;
-			lblDescription.Location = new System.Drawing.Point(14, 118);
+			lblDescription.Location = new System.Drawing.Point(14, 74);
 			lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblDescription.Name = "lblDescription";
 			lblDescription.Size = new System.Drawing.Size(67, 15);
 			lblDescription.TabIndex = 4;
 			lblDescription.Text = "Description";
 			// 
-			// picUserIcon
-			// 
-			picUserIcon.Location = new System.Drawing.Point(14, 14);
-			picUserIcon.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			picUserIcon.Name = "picUserIcon";
-			picUserIcon.Size = new System.Drawing.Size(56, 55);
-			picUserIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			picUserIcon.TabIndex = 20;
-			picUserIcon.TabStop = false;
-			// 
 			// lblUsername1
 			// 
 			lblUsername1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
 			lblUsername1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			lblUsername1.Location = new System.Drawing.Point(77, 14);
+			lblUsername1.Location = new System.Drawing.Point(13, 9);
 			lblUsername1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblUsername1.Name = "lblUsername1";
-			lblUsername1.Size = new System.Drawing.Size(590, 20);
+			lblUsername1.Size = new System.Drawing.Size(655, 20);
 			lblUsername1.TabIndex = 0;
-			lblUsername1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
-			// lblUsername2
-			// 
-			lblUsername2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			lblUsername2.AutoEllipsis = true;
-			lblUsername2.Location = new System.Drawing.Point(77, 33);
-			lblUsername2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			lblUsername2.Name = "lblUsername2";
-			lblUsername2.Size = new System.Drawing.Size(590, 15);
-			lblUsername2.TabIndex = 1;
-			lblUsername2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			lblUsername1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// lblCategory
 			// 
 			lblCategory.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			lblCategory.AutoSize = true;
-			lblCategory.Location = new System.Drawing.Point(315, 95);
+			lblCategory.Location = new System.Drawing.Point(315, 51);
 			lblCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblCategory.Name = "lblCategory";
 			lblCategory.Size = new System.Drawing.Size(55, 15);
@@ -176,7 +152,7 @@
 			ddlCategory.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			ddlCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			ddlCategory.FormattingEnabled = true;
-			ddlCategory.Location = new System.Drawing.Point(379, 91);
+			ddlCategory.Location = new System.Drawing.Point(379, 47);
 			ddlCategory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			ddlCategory.Name = "ddlCategory";
 			ddlCategory.Size = new System.Drawing.Size(162, 23);
@@ -186,7 +162,7 @@
 			// 
 			chkScraps.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			chkScraps.AutoSize = true;
-			chkScraps.Location = new System.Drawing.Point(327, 122);
+			chkScraps.Location = new System.Drawing.Point(327, 78);
 			chkScraps.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkScraps.Name = "chkScraps";
 			chkScraps.Size = new System.Drawing.Size(93, 19);
@@ -199,7 +175,7 @@
 			ddlTheme.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			ddlTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			ddlTheme.FormattingEnabled = true;
-			ddlTheme.Location = new System.Drawing.Point(379, 149);
+			ddlTheme.Location = new System.Drawing.Point(379, 105);
 			ddlTheme.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			ddlTheme.Name = "ddlTheme";
 			ddlTheme.Size = new System.Drawing.Size(162, 23);
@@ -209,7 +185,7 @@
 			// 
 			lblTheme.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			lblTheme.AutoSize = true;
-			lblTheme.Location = new System.Drawing.Point(315, 152);
+			lblTheme.Location = new System.Drawing.Point(315, 108);
 			lblTheme.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblTheme.Name = "lblTheme";
 			lblTheme.Size = new System.Drawing.Size(43, 15);
@@ -220,7 +196,7 @@
 			// 
 			chkLockComments.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			chkLockComments.AutoSize = true;
-			chkLockComments.Location = new System.Drawing.Point(14, 351);
+			chkLockComments.Location = new System.Drawing.Point(14, 252);
 			chkLockComments.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkLockComments.Name = "chkLockComments";
 			chkLockComments.Size = new System.Drawing.Size(352, 19);
@@ -234,7 +210,7 @@
 			ddlSpecies.DisplayMember = "Name";
 			ddlSpecies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			ddlSpecies.FormattingEnabled = true;
-			ddlSpecies.Location = new System.Drawing.Point(379, 180);
+			ddlSpecies.Location = new System.Drawing.Point(379, 136);
 			ddlSpecies.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			ddlSpecies.Name = "ddlSpecies";
 			ddlSpecies.Size = new System.Drawing.Size(162, 23);
@@ -245,7 +221,7 @@
 			// 
 			lblSpecies.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			lblSpecies.AutoSize = true;
-			lblSpecies.Location = new System.Drawing.Point(315, 183);
+			lblSpecies.Location = new System.Drawing.Point(315, 139);
 			lblSpecies.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblSpecies.Name = "lblSpecies";
 			lblSpecies.Size = new System.Drawing.Size(46, 15);
@@ -257,7 +233,7 @@
 			ddlGender.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			ddlGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			ddlGender.FormattingEnabled = true;
-			ddlGender.Location = new System.Drawing.Point(379, 211);
+			ddlGender.Location = new System.Drawing.Point(379, 167);
 			ddlGender.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			ddlGender.Name = "ddlGender";
 			ddlGender.Size = new System.Drawing.Size(162, 23);
@@ -267,7 +243,7 @@
 			// 
 			lblGender.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			lblGender.AutoSize = true;
-			lblGender.Location = new System.Drawing.Point(315, 215);
+			lblGender.Location = new System.Drawing.Point(315, 171);
 			lblGender.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblGender.Name = "lblGender";
 			lblGender.Size = new System.Drawing.Size(45, 15);
@@ -280,7 +256,7 @@
 			groupBox3.Controls.Add(radRating2);
 			groupBox3.Controls.Add(radRating1);
 			groupBox3.Controls.Add(radRating0);
-			groupBox3.Location = new System.Drawing.Point(315, 242);
+			groupBox3.Location = new System.Drawing.Point(315, 198);
 			groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			groupBox3.Name = "groupBox3";
 			groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -329,7 +305,7 @@
 			// 
 			chkRemoveTransparency.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			chkRemoveTransparency.AutoSize = true;
-			chkRemoveTransparency.Location = new System.Drawing.Point(379, 351);
+			chkRemoveTransparency.Location = new System.Drawing.Point(379, 252);
 			chkRemoveTransparency.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkRemoveTransparency.Name = "chkRemoveTransparency";
 			chkRemoveTransparency.Size = new System.Drawing.Size(140, 19);
@@ -341,7 +317,7 @@
 			// 
 			groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
 			groupBox1.Controls.Add(listBox1);
-			groupBox1.Location = new System.Drawing.Point(548, 91);
+			groupBox1.Location = new System.Drawing.Point(548, 47);
 			groupBox1.Name = "groupBox1";
 			groupBox1.Size = new System.Drawing.Size(121, 198);
 			groupBox1.TabIndex = 22;
@@ -365,7 +341,7 @@
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			ClientSize = new System.Drawing.Size(681, 417);
+			ClientSize = new System.Drawing.Size(681, 318);
 			Controls.Add(groupBox1);
 			Controls.Add(chkRemoveTransparency);
 			Controls.Add(groupBox3);
@@ -379,9 +355,7 @@
 			Controls.Add(chkScraps);
 			Controls.Add(ddlCategory);
 			Controls.Add(lblCategory);
-			Controls.Add(picUserIcon);
 			Controls.Add(lblUsername1);
-			Controls.Add(lblUsername2);
 			Controls.Add(lblDescription);
 			Controls.Add(txtTitle);
 			Controls.Add(lblTitle);
@@ -393,7 +367,6 @@
 			Name = "FurAffinityPostForm";
 			Text = "Post to FurAffinity";
 			Shown += Form_Shown;
-			((System.ComponentModel.ISupportInitialize)picUserIcon).EndInit();
 			groupBox3.ResumeLayout(false);
 			groupBox3.PerformLayout();
 			groupBox1.ResumeLayout(false);
@@ -409,9 +382,7 @@
 		private System.Windows.Forms.Label lblTitle;
 		private System.Windows.Forms.TextBox txtTitle;
 		private System.Windows.Forms.Label lblDescription;
-		private System.Windows.Forms.PictureBox picUserIcon;
 		private System.Windows.Forms.Label lblUsername1;
-		private System.Windows.Forms.Label lblUsername2;
 		private System.Windows.Forms.Label lblCategory;
 		private System.Windows.Forms.ComboBox ddlCategory;
 		private System.Windows.Forms.CheckBox chkScraps;

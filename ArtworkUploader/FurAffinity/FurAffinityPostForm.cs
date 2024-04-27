@@ -1,12 +1,10 @@
-﻿using ArtworkSourceSpecification;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fsfs = FurAffinityFs.FurAffinity;
 
@@ -14,9 +12,9 @@ namespace ArtworkUploader.FurAffinity {
 	public partial class FurAffinityPostForm : Form {
 		private readonly Fsfs.ICredentials _credentials;
 		private readonly TextPost _post;
-		private readonly IDownloadedData _downloaded;
+		private readonly LocalFile _downloaded;
 
-		public FurAffinityPostForm(Fsfs.ICredentials s, TextPost post, IDownloadedData downloaded) {
+		public FurAffinityPostForm(Fsfs.ICredentials s, TextPost post, LocalFile downloaded) {
 			InitializeComponent();
 			_credentials = s;
 			_post = post;
@@ -52,8 +50,7 @@ namespace ArtworkUploader.FurAffinity {
 		private async void Form_Shown(object sender, EventArgs e) {
 			PopulateDescription();
 
-			using (var ms = new MemoryStream(_downloaded.Data, false))
-			using (var image = Image.FromStream(ms)) {
+			using (var image = Image.FromFile(_downloaded.Filename)) {
 				chkRemoveTransparency.Enabled = HasAlpha(image);
 			}
 
@@ -62,12 +59,14 @@ namespace ArtworkUploader.FurAffinity {
 				foreach (var x in species) {
 					ddlSpecies.Items.Add(x);
 				}
+
+				lblUsername1.Text = await Fsfs.WhoamiAsync(_credentials);
+
+				foreach (var galleryFolder in await Fsfs.ListGalleryFoldersAsync(_credentials)) {
+					listBox1.Items.Add(galleryFolder);
+				}
 			} catch (Exception ex) {
 				Console.Error.WriteLine(ex);
-			}
-
-			foreach (var galleryFolder in await Fsfs.ListGalleryFoldersAsync(_credentials)) {
-				listBox1.Items.Add(galleryFolder);
 			}
 		}
 
@@ -82,9 +81,8 @@ namespace ArtworkUploader.FurAffinity {
 			btnPost.Enabled = false;
 			try {
 				string contentType;
-				byte[] data = _downloaded.Data;
-				using (var ms = new MemoryStream(_downloaded.Data, false))
-				using (var image = Image.FromStream(ms)) {
+				byte[] data = null;
+				using (var image = Image.FromFile(_downloaded.Filename)) {
 					contentType = image.RawFormat.Equals(ImageFormat.Png) ? "image/png"
 						: image.RawFormat.Equals(ImageFormat.Jpeg) ? "image/jpeg"
 						: image.RawFormat.Equals(ImageFormat.Gif) ? "image/gif"

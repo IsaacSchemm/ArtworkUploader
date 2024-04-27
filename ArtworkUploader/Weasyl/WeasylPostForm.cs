@@ -1,5 +1,4 @@
-﻿using ArtworkSourceSpecification;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -11,9 +10,9 @@ namespace ArtworkUploader.Weasyl {
 	public partial class WeasylPostForm : Form {
 		private readonly WeasylClient _apiClient;
 		private readonly WeasylClient _frontendClient;
-		private readonly IDownloadedData _downloaded;
+		private readonly LocalFile _downloaded;
 
-		public WeasylPostForm(Settings.WeasylSettings s, TextPost post, IDownloadedData downloaded) {
+		public WeasylPostForm(Settings.WeasylSettings s, TextPost post, LocalFile downloaded) {
 			InitializeComponent();
 
 			_apiClient = _frontendClient = new WeasylClient(s.apiKey);
@@ -44,17 +43,6 @@ namespace ArtworkUploader.Weasyl {
 				var folders = await _frontendClient.GetFoldersAsync();
 				ddlFolder.Items.Add("");
 				foreach (var f in folders) ddlFolder.Items.Add(f);
-
-				var avatarUrl = await _apiClient.GetAvatarUrlAsync(user.login);
-
-				var req = WebRequest.Create(avatarUrl);
-				using (var resp = await req.GetResponseAsync())
-				using (var stream = resp.GetResponseStream())
-				using (var ms = new MemoryStream()) {
-					await stream.CopyToAsync(ms);
-					ms.Position = 0;
-					picUserIcon.Image = Image.FromStream(ms);
-				}
 			} catch (Exception) { }
 		}
 
@@ -71,7 +59,7 @@ namespace ArtworkUploader.Weasyl {
 				var folder = ddlFolder.SelectedItem as WeasylClient.Folder?;
 
 				await _frontendClient.UploadVisualAsync(
-					_downloaded.Data,
+					File.ReadAllBytes(_downloaded.Filename),
 					txtTitle.Text,
 					subtype,
 					folder?.FolderId,

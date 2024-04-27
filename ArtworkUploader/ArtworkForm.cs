@@ -1,23 +1,16 @@
-﻿using ArtworkSourceSpecification;
-using ArtworkUploader.DeviantArt;
+﻿using ArtworkUploader.DeviantArt;
 using ArtworkUploader.FurAffinity;
 using ArtworkUploader.Weasyl;
-using DeviantArtFs.Api;
 using Microsoft.FSharp.Collections;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Windows.Forms;
 
 namespace ArtworkUploader {
 	public partial class ArtworkForm : Form {
-		private IDownloadedData _exportable;
-
 		private class DestinationOption {
 			public readonly string Name;
 			public readonly Action Click;
@@ -56,25 +49,9 @@ namespace ArtworkUploader {
 			this.Shown += (o, e) => LoadImage(filename);
 		}
 
-		public record LocalFile(string Filename) : IDownloadedData {
-			string Stash.IFormFile.ContentType {
-				get {
-					using var image = Image.FromFile(Filename);
-					return image.RawFormat.Guid == ImageFormat.Png.Guid ? "image/png"
-						: image.RawFormat.Guid == ImageFormat.Jpeg.Guid ? "image/jpeg"
-						: image.RawFormat.Guid == ImageFormat.Gif.Guid ? "image/gif"
-						: "application/octet-stream";
-				}
-			}
-
-			byte[] Stash.IFormFile.Data => File.ReadAllBytes(Filename);
-		}
-
 		public void LoadImage(string filename) {
-			var downloadedData = _exportable = new LocalFile(filename);
-
-			using var ms = new MemoryStream(downloadedData.Data, false);
-			pictureBox1.Image = Image.FromStream(ms);
+			var image = Image.FromFile(filename);
+			pictureBox1.Image = image;
 
 			txtTitle.Text = "";
 			wbrDescription.Navigate("about:blank");
@@ -86,54 +63,42 @@ namespace ArtworkUploader {
 
 			Settings settings = Settings.Load();
 
-			exportAsToolStripMenuItem.Enabled = false;
+			foreach (var da in settings.DeviantArtTokens) {
+				listBox1.Items.Add(new DestinationOption($"DeviantArt / Sta.sh {da.Username}", () => {
+					if (image.RawFormat.Guid == ImageFormat.Gif.Guid) {
+						MessageBox.Show(this, "GIF images on DeviantArt require a separate preview image, which isn't possible via the API.", Text);
+						return;
+					}
 
-			if (downloadedData != null) {
-				exportAsToolStripMenuItem.Enabled = true;
+					using var f = new Form();
 
-				foreach (var da in settings.DeviantArtTokens) {
-					listBox1.Items.Add(new DestinationOption($"DeviantArt / Sta.sh {da.Username}", () => {
-						var toPost = downloadedData;
-						if (toPost.ContentType == "image/gif") {
-							switch (MessageBox.Show(this, "GIF images on DeviantArt require a separate preview image, which isn't possible via the API. Would you like to upload this image in PNG format instead?", Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)) {
-								case DialogResult.Cancel:
-									return;
-								case DialogResult.Yes:
-									toPost = new PngRendition(toPost);
-									break;
-							}
-						}
+					f.Width = 600;
+					f.Height = 350;
+					var d = new DeviantArtUploadControl(da) {
+						Dock = DockStyle.Fill
+					};
+					f.Controls.Add(d);
+					d.Uploaded += url => f.Close();
 
-						using var f = new Form();
+					d.SetSubmission(ExportAsText(), new LocalFile(filename), null);
 
-						f.Width = 600;
-						f.Height = 350;
-						var d = new DeviantArtUploadControl(da) {
-							Dock = DockStyle.Fill
-						};
-						f.Controls.Add(d);
-						d.Uploaded += url => f.Close();
-
-						d.SetSubmission(ExportAsText(), toPost, null);
-
-						f.ShowDialog(this);
-					}));
-				}
-				foreach (var fa in settings.FurAffinity) {
-					listBox1.Items.Add(new DestinationOption($"Fur Affinity ({fa.username})", () => {
-						using var f = new FurAffinityPostForm(fa, ExportAsText(), downloadedData);
-						f.ShowDialog(this);
-					}));
-				}
-				foreach (var w in settings.WeasylApi) {
-					if (w.apiKey == null) continue;
-					listBox1.Items.Add(new DestinationOption($"Weasyl ({w.username})", () => {
-						using var f = new WeasylPostForm(w, ExportAsText(), downloadedData);
-						f.ShowDialog(this);
-					}));
-				}
-				listBox1.Items.Add("");
+					f.ShowDialog(this);
+				}));
 			}
+			foreach (var fa in settings.FurAffinity) {
+				listBox1.Items.Add(new DestinationOption($"Fur Affinity ({fa.username})", () => {
+					using var f = new FurAffinityPostForm(fa, ExportAsText(), new LocalFile(filename));
+					f.ShowDialog(this);
+				}));
+			}
+			foreach (var w in settings.WeasylApi) {
+				if (w.apiKey == null) continue;
+				listBox1.Items.Add(new DestinationOption($"Weasyl ({w.username})", () => {
+					using var f = new WeasylPostForm(w, ExportAsText(), new LocalFile(filename));
+					f.ShowDialog(this);
+				}));
+			}
+			listBox1.Items.Add("");
 		}
 
 		private void btnPost_Click(object sender, EventArgs ea) {
@@ -141,7 +106,7 @@ namespace ArtworkUploader {
 			o?.Click?.Invoke();
 		}
 
-		public const string OpenFilter = "All supported formats|*.png;*.jpg;*.jpeg;*.gif;*.cps|Image files|*.png;*.jpg;*.jpeg;*.gif|CrosspostSharp JSON|*.cps|All files|*.*";
+		public const string OpenFilter = "All supported formats|*.png;*.jpg;*.jpeg;*.gif|Image files|*.png;*.jpg;*.jpeg;*.gif|All files|*.*";
 
 		private void openToolStripMenuItem_Click(object sender, EventArgs e) {
 			using var openFileDialog = new OpenFileDialog();
@@ -149,25 +114,6 @@ namespace ArtworkUploader {
 			openFileDialog.Multiselect = false;
 			if (openFileDialog.ShowDialog() == DialogResult.OK) {
 				LoadImage(openFileDialog.FileName);
-			}
-		}
-
-		private void exportAsToolStripMenuItem_Click(object sender, EventArgs e) {
-			if (_exportable == null) {
-				MessageBox.Show(this, "This post does not have image data.", Text);
-				return;
-			}
-
-			using var saveFileDialog = new SaveFileDialog();
-			using (var ms = new MemoryStream(_exportable.Data, false))
-			using (var image = Image.FromStream(ms)) {
-				saveFileDialog.Filter = image.RawFormat.Equals(ImageFormat.Png) ? "PNG images|*.png"
-					: image.RawFormat.Equals(ImageFormat.Jpeg) ? "JPEG images|*.jpg;*.jpeg"
-					: image.RawFormat.Equals(ImageFormat.Gif) ? "GIF images|*.gif"
-					: "All files|*.*";
-			}
-			if (saveFileDialog.ShowDialog() == DialogResult.OK) {
-				File.WriteAllBytes(saveFileDialog.FileName, _exportable.Data);
 			}
 		}
 

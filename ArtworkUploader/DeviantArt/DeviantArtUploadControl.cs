@@ -1,8 +1,6 @@
-﻿using ArtworkSourceSpecification;
-using DeviantArtFs;
+﻿using DeviantArtFs;
 using DeviantArtFs.ParameterTypes;
 using DeviantArtFs.ResponseTypes;
-using Microsoft.FSharp.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +28,7 @@ namespace ArtworkUploader.DeviantArt {
 		}
 
 		private TextPost _post;
-		private IDownloadedData _downloaded;
+		private LocalFile _downloaded;
 		private long? _stashItemId;
 
 		public string UploadedUrl { get; private set; }
@@ -52,7 +50,7 @@ namespace ArtworkUploader.DeviantArt {
 			ddlSharing.SelectedIndex = 0;
 		}
 
-		public void SetSubmission(TextPost post, IDownloadedData downloaded, long? stashItemId) {
+		public void SetSubmission(TextPost post, LocalFile downloaded, long? stashItemId) {
 			_post = post;
 			_downloaded = downloaded;
 			_stashItemId = stashItemId;

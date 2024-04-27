@@ -1,7 +1,5 @@
 ﻿using ArtworkUploader.DeviantArt;
 using Newtonsoft.Json;
-using Pleronet;
-using Pleronet.Entities;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,39 +33,6 @@ namespace ArtworkUploader {
 		}
 
 		public List<FurAffinitySettings> FurAffinity = new();
-
-		public struct FurryNetworkSettings : IAccountCredentials {
-			public string refreshToken;
-			public string characterName;
-
-			readonly string IAccountCredentials.Username => characterName;
-		}
-
-		public List<FurryNetworkSettings> FurryNetwork = new();
-
-		public struct InkbunnySettings : IAccountCredentials {
-			public string sid;
-			public int userId;
-			public string username;
-
-			readonly string IAccountCredentials.Username => username;
-		}
-
-		public List<InkbunnySettings> Inkbunny = new();
-
-		public List<PleronetSettings> Pleronet = new();
-
-		public struct PleronetSettings : IAccountCredentials {
-			public AppRegistration AppRegistration { get; set; }
-			public Auth Auth { get; set; }
-			public string Username { get; set; }
-
-			public readonly MastodonClient GetClient() {
-				return new MastodonClient(AppRegistration, Auth);
-			}
-		}
-
-		public List<PleronetSettings> Pixelfed = new();
 
 		public struct WeasylSettings : IAccountCredentials {
 			public string username;
