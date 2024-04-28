@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public class DeviantArtScrapsSource : DeviantArtSource {
 		private static readonly Lazy<HttpClient> _client = new(() => {
 			var client = new HttpClient(new HttpClientHandler {

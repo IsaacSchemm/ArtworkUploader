@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Inkbunny {
+namespace ArtworkUploader.Inkbunny {
 	public class InkbunnySearchParameters {
 		public enum JoinType { or, and }
 		public enum SalesStatus { forsale, digital, prints }

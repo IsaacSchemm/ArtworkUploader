@@ -4,7 +4,7 @@ using DeviantArtFs.ParameterTypes;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public class DeviantArtGallerySource : DeviantArtSource {
 		public DeviantArtGallerySource(IDeviantArtAccessToken token) : base(token) { }
 

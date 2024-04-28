@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
 	public class FurryNetworkArtworkSource : IArtworkSource {
 		private readonly FurryNetworkClient _client;
 		private readonly string _characterName;

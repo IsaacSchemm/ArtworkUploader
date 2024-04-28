@@ -1,4 +1,4 @@
-﻿namespace CrosspostSharp3.Weasyl {
+﻿namespace ArtworkUploader.Weasyl {
 	partial class WeasylPostForm {
 		/// <summary>
 		/// Required designer variable.

@@ -1,4 +1,4 @@
-﻿namespace CrosspostSharp3.FurryNetwork {
+﻿namespace ArtworkUploader.FurryNetwork {
 	partial class FurryNetworkCharacterSelectionForm {
 		/// <summary>
 		/// Required designer variable.

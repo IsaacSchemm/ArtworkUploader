@@ -1,6 +1,6 @@
 ﻿using ArtworkSourceSpecification;
-using CrosspostSharp3.FurAffinity;
-using CrosspostSharp3.FurryNetwork;
+using ArtworkUploader.FurAffinity;
+using ArtworkUploader.FurryNetwork;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,12 +8,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CrosspostSharp3.Weasyl;
-using CrosspostSharp3.Mastodon;
-using CrosspostSharp3.DeviantArt;
+using ArtworkUploader.Weasyl;
+using ArtworkUploader.Mastodon;
+using ArtworkUploader.DeviantArt;
 using System.Threading;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class MainForm : Form {
 		private IArtworkSource _currentWrapper;
 		private int _currentPosition = 0;

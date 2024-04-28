@@ -1,4 +1,4 @@
-﻿namespace CrosspostSharp3 {
+﻿namespace ArtworkUploader {
 	partial class AboutForm {
 		/// <summary>
 		/// Required designer variable.

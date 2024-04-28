@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CrosspostSharp3.Weasyl {
+namespace ArtworkUploader.Weasyl {
 	public class WeasylGallery {
 		public IEnumerable<WeasylGallerySubmission> submissions;
 		public int? backid;

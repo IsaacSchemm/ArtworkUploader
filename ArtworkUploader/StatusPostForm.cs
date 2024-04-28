@@ -7,7 +7,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class StatusPostForm : Form {
 		private readonly Dictionary<CheckBox, Func<Task<Uri>>> _postFunctions;
 

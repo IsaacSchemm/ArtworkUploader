@@ -1,10 +1,10 @@
-﻿using CrosspostSharp3.FurAffinity;
+﻿using ArtworkUploader.FurAffinity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class MainForm {
 		private async void furAffinityToolStripMenuItem_Click(object sender, EventArgs e) {
 			toolsToolStripMenuItem.Enabled = false;

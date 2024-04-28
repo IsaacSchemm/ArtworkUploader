@@ -5,8 +5,8 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <RootNamespace>CrosspostSharp3</RootNamespace>
-    <AssemblyName>CrosspostSharp3</AssemblyName>
+    <RootNamespace>ArtworkUploader</RootNamespace>
+    <AssemblyName>ArtworkUploader</AssemblyName>
     <Platforms>x86;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>

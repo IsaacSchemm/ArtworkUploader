@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Inkbunny {
+namespace ArtworkUploader.Inkbunny {
     public abstract class InkbunnySubmission {
         public int submission_id;
         public InkbunnyResponseBoolean hidden;

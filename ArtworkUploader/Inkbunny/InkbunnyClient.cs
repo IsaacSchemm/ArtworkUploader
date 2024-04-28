@@ -1,5 +1,5 @@
 ﻿using ArtworkSourceSpecification;
-using CrosspostSharp3.Inkbunny.Responses;
+using ArtworkUploader.Inkbunny.Responses;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Inkbunny {
+namespace ArtworkUploader.Inkbunny {
 	public class InkbunnyClient : IArtworkSource {
 		public string Sid { get; private set; }
 		public int UserId { get; private set; }

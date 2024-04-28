@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public class DeviantArtStatusSource : DeviantArtSource {
 		public DeviantArtStatusSource(IDeviantArtAccessToken token) : base(token) { }
 

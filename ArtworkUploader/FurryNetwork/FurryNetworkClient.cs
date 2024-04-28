@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
 	public class FurryNetworkClient {
         private string AccessToken { get; set; }
         public string RefreshToken { get; private set; }
@@ -19,7 +19,7 @@ namespace CrosspostSharp3.FurryNetwork {
         private async Task<HttpWebRequest> CreateRequest(string method, string urlPath, object jsonBody = null) {
             var req = WebRequest.CreateHttp("https://furrynetwork.com/api/" + urlPath);
             req.Method = method;
-            req.UserAgent = "CrosspostSharp3.FurryNetwork/0.3 (https://www.github.com/libertyernie/CrosspostSharp)";
+            req.UserAgent = "ArtworkUploader.FurryNetwork/0.3 (https://www.github.com/libertyernie/CrosspostSharp)";
             if (AccessToken != null) {
                 req.Headers["Authorization"] = $"Bearer {AccessToken}";
             }
@@ -64,7 +64,7 @@ namespace CrosspostSharp3.FurryNetwork {
             req.Method = "POST";
             req.ContentType = "application/x-www-form-urlencoded";
             req.Accept = "application/json";
-            req.UserAgent = "CrosspostSharp3.FurryNetwork/0.2 (https://www.github.com/libertyernie/CrosspostSharp)";
+            req.UserAgent = "ArtworkUploader.FurryNetwork/0.2 (https://www.github.com/libertyernie/CrosspostSharp)";
             using (var sw = new StreamWriter(await req.GetRequestStreamAsync())) {
                 await sw.WriteAsync($"client_id=123&");
                 await sw.WriteAsync($"grant_type=refresh_token&");
@@ -273,7 +273,7 @@ namespace CrosspostSharp3.FurryNetwork {
 
 				var req2 = WebRequest.CreateHttp("https://furrynetwork.com/api/" + url);
 				req2.Method = "POST";
-				req2.UserAgent = "CrosspostSharp3.FurryNetwork/0.2 (https://www.github.com/libertyernie/CrosspostSharp)";
+				req2.UserAgent = "ArtworkUploader.FurryNetwork/0.2 (https://www.github.com/libertyernie/CrosspostSharp)";
 				if (AccessToken != null) {
 					req2.Headers["Authorization"] = $"Bearer {AccessToken}";
 				}

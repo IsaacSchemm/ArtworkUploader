@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
     public class Character : IAuthor {
         public int Id { get; set; }
         public string Name { get; set; }

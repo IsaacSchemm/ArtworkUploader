@@ -1,4 +1,4 @@
-﻿using CrosspostSharp3.DeviantArt;
+﻿using ArtworkUploader.DeviantArt;
 using Newtonsoft.Json;
 using Pleronet;
 using Pleronet.Entities;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public class Settings {
 		public interface IAccountCredentials {
 			string Username { get; }
@@ -78,7 +78,7 @@ namespace CrosspostSharp3 {
 
 		public List<WeasylSettings> WeasylApi = new();
 
-		public static Settings Load(string filename = "CrosspostSharp3.json") {
+		public static Settings Load(string filename = "ArtworkUploader.json") {
 			Settings s = new();
 			if (filename != null && File.Exists(filename)) {
 				s = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(filename));
@@ -87,7 +87,7 @@ namespace CrosspostSharp3 {
 		}
 
 		public void Save() {
-			File.WriteAllText("CrosspostSharp3.json", JsonConvert.SerializeObject(this, Formatting.Indented));
+			File.WriteAllText("ArtworkUploader.json", JsonConvert.SerializeObject(this, Formatting.Indented));
 		}
 	}
 }

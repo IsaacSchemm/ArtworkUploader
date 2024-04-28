@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Weasyl {
+namespace ArtworkUploader.Weasyl {
 	public partial class WeasylClient {
 		private readonly string _apiKey;
 

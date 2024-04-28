@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
 	public class Submission {
         public int Id { get; set; }
         public int CharacterId { get; set; }

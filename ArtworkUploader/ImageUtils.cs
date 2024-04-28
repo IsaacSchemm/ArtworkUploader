@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public static class ImageUtils {
 		public static byte[] MakeSquare(byte[] imageData) {
 			using (var ms1 = new MemoryStream(imageData, false))

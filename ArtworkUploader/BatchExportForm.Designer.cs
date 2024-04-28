@@ -1,4 +1,4 @@
-﻿namespace CrosspostSharp3 {
+﻿namespace ArtworkUploader {
 	partial class BatchExportForm {
 		/// <summary>
 		/// Required designer variable.

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Mastodon {
+namespace ArtworkUploader.Mastodon {
 	public class MastodonSource : IArtworkSource {
 		private readonly MastodonClient _client;
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
 	public partial class FurryNetworkPostForm : Form {
 		private readonly FurryNetworkClient _client;
 		private readonly string _characterName;

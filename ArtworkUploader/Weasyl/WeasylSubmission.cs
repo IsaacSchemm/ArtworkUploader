@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace CrosspostSharp3.Weasyl {
+namespace ArtworkUploader.Weasyl {
 	public abstract class WeasylSubmissionBase {
 		public string link;
 		public WeasylSubmissionMedia media;

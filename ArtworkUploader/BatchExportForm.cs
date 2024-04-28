@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class BatchExportForm : Form {
 		public BatchExportForm(IEnumerable<IArtworkSource> wrappers) {
 			InitializeComponent();

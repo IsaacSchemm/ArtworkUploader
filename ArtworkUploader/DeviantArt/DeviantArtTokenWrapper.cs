@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public class DeviantArtTokenWrapper : IDeviantArtRefreshableAccessToken {
 		private readonly Settings _parent;
 		private Settings.DeviantArtAccountSettings _current;

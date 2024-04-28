@@ -6,7 +6,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Weasyl {
+namespace ArtworkUploader.Weasyl {
 	public partial class WeasylClient {
 		private CookieContainer cookieContainer = new CookieContainer();
 
@@ -14,7 +14,7 @@ namespace CrosspostSharp3.Weasyl {
 			HttpWebRequest req = WebRequest.CreateHttp(url);
 			if (_apiKey != null) req.Headers["X-Weasyl-API-Key"] = _apiKey;
 			req.CookieContainer = cookieContainer;
-			req.UserAgent = "CrosspostSharp3.Weasyl.Frontend/0.1 (https://https://github.com/libertyernie/CrosspostSharp3.Weasyl)";
+			req.UserAgent = "ArtworkUploader.Weasyl.Frontend/0.1 (https://https://github.com/libertyernie/ArtworkUploader.Weasyl)";
 			req.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
 			return req;
 		}

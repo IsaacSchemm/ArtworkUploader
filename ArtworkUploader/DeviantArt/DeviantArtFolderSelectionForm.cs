@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public partial class DeviantArtFolderSelectionForm : Form {
 		public IEnumerable<GalleryFolder> InitialFolders { get; set; }
 

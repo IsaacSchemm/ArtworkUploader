@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3.Inkbunny {
+namespace ArtworkUploader.Inkbunny {
 	public partial class InkbunnyPostForm : Form {
 		private readonly InkbunnyClient _client;
 		private readonly TextPost _post;

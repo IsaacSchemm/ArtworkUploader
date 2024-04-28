@@ -1,9 +1,9 @@
-﻿using CrosspostSharp3.FurryNetwork;
+﻿using ArtworkUploader.FurryNetwork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class MainForm {
 		private async void furryNetworkToolStripMenuItem_Click(object sender, EventArgs e) {
 			toolsToolStripMenuItem.Enabled = false;

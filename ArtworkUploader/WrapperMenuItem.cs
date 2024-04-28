@@ -1,6 +1,6 @@
 ﻿using ArtworkSourceSpecification;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public class WrapperMenuItem {
 		public readonly IArtworkSource BaseWrapper;
 		public readonly string DisplayName;

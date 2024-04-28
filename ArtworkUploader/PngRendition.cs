@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public class PngRendition : IDownloadedData {
 		public PngRendition(IDownloadedData post) {
 			using var ms = new MemoryStream(post.Data, false);

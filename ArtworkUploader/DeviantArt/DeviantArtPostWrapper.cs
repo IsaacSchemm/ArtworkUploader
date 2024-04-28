@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public class DeviantArtPostWrapper : IRemotePhotoPost {
 		private readonly Deviation _deviation;
 		private readonly DeviantArtFs.Api.Deviation.Metadata _metadata;

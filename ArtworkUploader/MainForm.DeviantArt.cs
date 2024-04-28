@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class MainForm {
 		private async void deviantArtToolStripMenuItem_Click(object sender, EventArgs e) {
 			toolsToolStripMenuItem.Enabled = false;

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class AccountSelectionForm<T> : Form where T : Settings.IAccountCredentials {
 		private class MenuItem {
 			public string Username => Account.Username ?? Account.ToString();

@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
     public class SearchResults {
         public IEnumerable<Hit> Hits { get; set; }
         public IEnumerable<object> Tags { get; set; }

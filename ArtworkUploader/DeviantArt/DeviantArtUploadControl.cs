@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static DeviantArtFs.Api.Stash;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public partial class DeviantArtUploadControl : UserControl {
 		public delegate void DeviantArtUploadedHandler(string url);
 		public event DeviantArtUploadedHandler Uploaded;

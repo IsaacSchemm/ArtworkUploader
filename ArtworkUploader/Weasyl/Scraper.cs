@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Weasyl {
+namespace ArtworkUploader.Weasyl {
     public static class Scraper {
 		public static async Task<List<int>> GetCharacterIdsAsync(string user) {
 			if (user == null) throw new ArgumentNullException(nameof(user));

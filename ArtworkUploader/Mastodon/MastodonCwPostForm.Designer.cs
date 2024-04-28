@@ -1,4 +1,4 @@
-﻿namespace CrosspostSharp3.Mastodon {
+﻿namespace ArtworkUploader.Mastodon {
 	partial class MastodonCwPostForm {
 		/// <summary>
 		/// Required designer variable.

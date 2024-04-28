@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public static class IECompatibility {
 		public enum Mode {
 			IE11IgnoreDoctype = 11001,

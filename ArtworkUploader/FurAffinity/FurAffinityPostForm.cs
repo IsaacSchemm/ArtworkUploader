@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Fsfs = FurAffinityFs.FurAffinity;
 
-namespace CrosspostSharp3.FurAffinity {
+namespace ArtworkUploader.FurAffinity {
 	public partial class FurAffinityPostForm : Form {
 		private readonly Fsfs.ICredentials _credentials;
 		private readonly TextPost _post;

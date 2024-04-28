@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
     public class CharacterStats {
         public int Artwork { get; set; }
         public int Photos { get; set; }

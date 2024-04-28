@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Weasyl {
+namespace ArtworkUploader.Weasyl {
 	public class WeasylGallerySource : IArtworkSource {
 		private readonly WeasylClient _client;
 

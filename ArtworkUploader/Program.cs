@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public static class Program {
 		/// <summary>
 		/// The main entry point for the application.
@@ -11,7 +11,7 @@ namespace CrosspostSharp3 {
 			CppCookieTools.Cookies.SetSuppressBehaviorForProcess(CppCookieTools.SuppressBehavior.CookiePersist);
 			IECompatibility.SetForCurrentProcess();
 
-			// Force current directory (if a file or folder was dragged onto CrosspostSharp3.exe)
+			// Force current directory (if a file or folder was dragged onto ArtworkUploader.exe)
 			Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
 			Application.EnableVisualStyles();

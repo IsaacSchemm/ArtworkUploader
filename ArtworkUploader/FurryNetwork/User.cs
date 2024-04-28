@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
     public class User {
         public int Id { get; set; }
         public string Email { get; set; }

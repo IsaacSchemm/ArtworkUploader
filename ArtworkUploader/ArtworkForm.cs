@@ -1,10 +1,10 @@
 ﻿using ArtworkSourceSpecification;
-using CrosspostSharp3.DeviantArt;
-using CrosspostSharp3.FurAffinity;
-using CrosspostSharp3.FurryNetwork;
-using CrosspostSharp3.Inkbunny;
-using CrosspostSharp3.Mastodon;
-using CrosspostSharp3.Weasyl;
+using ArtworkUploader.DeviantArt;
+using ArtworkUploader.FurAffinity;
+using ArtworkUploader.FurryNetwork;
+using ArtworkUploader.Inkbunny;
+using ArtworkUploader.Mastodon;
+using ArtworkUploader.Weasyl;
 using DeviantArtFs.Api;
 using Microsoft.FSharp.Collections;
 using System;
@@ -17,7 +17,7 @@ using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public partial class ArtworkForm : Form {
 		private IDownloadedData _exportable;
 

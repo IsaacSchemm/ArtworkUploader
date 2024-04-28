@@ -1,5 +1,5 @@
 ﻿
-namespace CrosspostSharp3.FurAffinity {
+namespace ArtworkUploader.FurAffinity {
 	partial class FurAffinityLoginForm {
 		/// <summary>
 		/// Required designer variable.

@@ -1,4 +1,4 @@
-﻿namespace CrosspostSharp3.Mastodon {
+﻿namespace ArtworkUploader.Mastodon {
 	partial class FocalPointForm {
 		/// <summary>
 		/// Required designer variable.

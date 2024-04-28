@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Inkbunny {
+namespace ArtworkUploader.Inkbunny {
     internal static class BooleanExtensions {
         public static string ToYesNo(this bool b) {
             return b ? "yes" : "no";

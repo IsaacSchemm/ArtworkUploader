@@ -7,7 +7,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public static class Downloader {
 		private record DownloadedData : IDownloadedData {
 			public byte[] Data { get; init; }

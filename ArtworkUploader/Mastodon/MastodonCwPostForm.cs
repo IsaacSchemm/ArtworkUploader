@@ -12,7 +12,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3.Mastodon {
+namespace ArtworkUploader.Mastodon {
 	public partial class MastodonCwPostForm : Form {
 		private readonly Settings.PleronetSettings _s;
 		private readonly HttpClient _httpClient;

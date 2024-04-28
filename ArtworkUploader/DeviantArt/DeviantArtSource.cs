@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public abstract class DeviantArtSource : IArtworkSource {
 		protected readonly IDeviantArtAccessToken _token;
 

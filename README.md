@@ -43,7 +43,7 @@ Compiling from Source
 
 This project can be built with Visual Studio 2022.
 
-The file OAuthConsumer.cs is missing from the CrosspostSharp3 project. Get your own
+The file OAuthConsumer.cs is missing from the ArtworkUploader project. Get your own
 OAuth keys, then put something like the following into OAuthConsumer.cs:
 
     namespace CrosspostSharp {

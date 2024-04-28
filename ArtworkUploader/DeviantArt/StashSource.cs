@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CrosspostSharp3.DeviantArt {
+namespace ArtworkUploader.DeviantArt {
 	public class StashSource : DeviantArtSource {
 		public StashSource(IDeviantArtAccessToken token) : base(token) { }
 

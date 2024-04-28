@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3 {
+namespace ArtworkUploader {
 	public static class HtmlConversion {
 		public static string ConvertHtmlToText(string html) {
 			html = html.Replace("<div><br></div>", "");

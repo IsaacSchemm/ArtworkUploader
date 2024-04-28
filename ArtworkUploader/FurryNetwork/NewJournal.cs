@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CrosspostSharp3.FurryNetwork {
+namespace ArtworkUploader.FurryNetwork {
 	public class NewJournal {
 		public Dictionary<string, object> Collections { get; set; } = new Dictionary<string, object>();
 		public bool Community_tags_allowed { get; set; } = true;

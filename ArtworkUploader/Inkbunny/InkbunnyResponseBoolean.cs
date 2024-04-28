@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrosspostSharp3.Inkbunny {
+namespace ArtworkUploader.Inkbunny {
 	[JsonConverter(typeof(InkbunnyResponseBooleanConverter))]
 	public struct InkbunnyResponseBoolean {
 		public readonly bool value;

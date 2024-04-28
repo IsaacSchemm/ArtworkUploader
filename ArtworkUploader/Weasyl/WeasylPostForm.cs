@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 
-namespace CrosspostSharp3.Weasyl {
+namespace ArtworkUploader.Weasyl {
 	public partial class WeasylPostForm : Form {
 		private readonly WeasylClient _apiClient;
 		private readonly WeasylClient _frontendClient;
