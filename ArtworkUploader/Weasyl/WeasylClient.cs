@@ -10,11 +10,14 @@ using System.Threading.Tasks;
 
 namespace ArtworkUploader.Weasyl {
 	public partial class WeasylClient(string apiKey) {
-		private static readonly Lazy<HttpClientHandler> _httpClientHandler =
-			new(() => new HttpClientHandler());
+		private static readonly Lazy<HttpMessageHandler> _httpClientHandler =
+			new(() => new SocketsHttpHandler {
+				UseCookies = false,
+				PooledConnectionLifetime = TimeSpan.FromMinutes(5)
+			});
 
 		private readonly Lazy<HttpClient> _httpClient = new(() => {
-			var client = new HttpClient(_httpClientHandler.Value);
+			var client = new HttpClient(_httpClientHandler.Value, disposeHandler: false);
 			client.DefaultRequestHeaders.Add(
 				"X-Weasyl-API-Key",
 				apiKey);
@@ -24,6 +27,9 @@ namespace ArtworkUploader.Weasyl {
 					"6.0"));
 			return client;
 		});
+
+		[GeneratedRegex(@"<option value=""(\d+)"">([^<]+)</option>")]
+		private static partial Regex OptionTag();
 
 		public async Task<WeasylUser> WhoamiAsync() {
 			using var resp = await _httpClient.Value.GetAsync("https://www.weasyl.com/api/whoami");
@@ -81,11 +87,9 @@ namespace ArtworkUploader.Weasyl {
 		}
 
 		public async Task UploadVisualAsync(ReadOnlyMemory<byte> data, string title, SubmissionType subtype, int? folderid, Rating rating, string content, IEnumerable<string> tags) {
-			string boundary = "--------------------" + Guid.NewGuid();
-
 			using var req = new HttpRequestMessage(HttpMethod.Post, "https://www.weasyl.com/submit/visual");
 
-			req.Content = new MultipartFormDataContent(boundary) {
+			req.Content = new MultipartFormDataContent {
 				{ new ReadOnlyMemoryContent(data), "submitfile", "picture.dat" },
 				{ new ByteArrayContent([]), "thumbfile", "thumb.dat" },
 				{ new StringContent(title), "title" },
@@ -99,18 +103,5 @@ namespace ArtworkUploader.Weasyl {
 			using var resp = await _httpClient.Value.SendAsync(req);
 			resp.EnsureSuccessStatusCode();
 		}
-
-		public async Task DeleteSubmissionAsync(int submitid) {
-			using var req = new HttpRequestMessage(HttpMethod.Post, "https://www.weasyl.com/remove/submission");
-			req.Content = new FormUrlEncodedContent(new Dictionary<string, string> {
-				["submitid"] = $"{submitid}"
-			});
-
-			using var resp = await _httpClient.Value.SendAsync(req);
-			resp.EnsureSuccessStatusCode();
-		}
-
-		[GeneratedRegex(@"<option value=""(\d+)"">([^<]+)</option>")]
-		private static partial Regex OptionTag();
 	}
 }
