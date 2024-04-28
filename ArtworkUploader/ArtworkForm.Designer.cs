@@ -45,6 +45,7 @@
 			deviantArtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			furAffinityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			weasylToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			postJournalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			panel1 = new System.Windows.Forms.Panel();
@@ -103,14 +104,14 @@
 			wbrDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			wbrDescription.MinimumSize = new System.Drawing.Size(23, 23);
 			wbrDescription.Name = "wbrDescription";
-			wbrDescription.Size = new System.Drawing.Size(367, 141);
+			wbrDescription.Size = new System.Drawing.Size(367, 139);
 			wbrDescription.TabIndex = 12;
 			// 
 			// chkAdult
 			// 
 			chkAdult.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			chkAdult.AutoSize = true;
-			chkAdult.Location = new System.Drawing.Point(219, 208);
+			chkAdult.Location = new System.Drawing.Point(219, 206);
 			chkAdult.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkAdult.Name = "chkAdult";
 			chkAdult.Size = new System.Drawing.Size(55, 19);
@@ -122,7 +123,7 @@
 			// 
 			chkMature.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			chkMature.AutoSize = true;
-			chkMature.Location = new System.Drawing.Point(143, 208);
+			chkMature.Location = new System.Drawing.Point(143, 206);
 			chkMature.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			chkMature.Name = "chkMature";
 			chkMature.Size = new System.Drawing.Size(64, 19);
@@ -133,7 +134,7 @@
 			// txtTags
 			// 
 			txtTags.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			txtTags.Location = new System.Drawing.Point(143, 179);
+			txtTags.Location = new System.Drawing.Point(143, 177);
 			txtTags.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtTags.Name = "txtTags";
 			txtTags.Size = new System.Drawing.Size(367, 23);
@@ -143,7 +144,7 @@
 			// 
 			lblTags.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
 			lblTags.AutoSize = true;
-			lblTags.Location = new System.Drawing.Point(105, 182);
+			lblTags.Location = new System.Drawing.Point(105, 180);
 			lblTags.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			lblTags.Name = "lblTags";
 			lblTags.Size = new System.Drawing.Size(30, 15);
@@ -232,7 +233,7 @@
 			// 
 			// toolsToolStripMenuItem
 			// 
-			toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mainWindowAccountSetupToolStripMenuItem });
+			toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { mainWindowAccountSetupToolStripMenuItem, postJournalToolStripMenuItem });
 			toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
 			toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
 			toolsToolStripMenuItem.Text = "&Tools";
@@ -264,6 +265,13 @@
 			weasylToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
 			weasylToolStripMenuItem.Text = "&Weasyl";
 			weasylToolStripMenuItem.Click += weasylToolStripMenuItem_Click;
+			// 
+			// postJournalToolStripMenuItem
+			// 
+			postJournalToolStripMenuItem.Name = "postJournalToolStripMenuItem";
+			postJournalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			postJournalToolStripMenuItem.Text = "&Post Journal...";
+			postJournalToolStripMenuItem.Click += postJournalToolStripMenuItem_Click;
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -315,7 +323,7 @@
 			MainMenuStrip = menuStrip1;
 			Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			Name = "ArtworkForm";
-			Text = "Edit Submission Details";
+			Text = "Artwork Uploader";
 			splitContainer1.Panel1.ResumeLayout(false);
 			splitContainer1.Panel2.ResumeLayout(false);
 			splitContainer1.Panel2.PerformLayout();
@@ -356,5 +364,6 @@
 		private System.Windows.Forms.ToolStripMenuItem deviantArtToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem furAffinityToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem weasylToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem postJournalToolStripMenuItem;
 	}
 }

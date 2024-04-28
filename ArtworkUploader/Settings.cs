@@ -15,6 +15,8 @@ namespace ArtworkUploader {
 			public string AccessToken { get; set; }
 			public string RefreshToken { get; set; }
 			public string Username { get; set; }
+
+			public override string ToString() => $"DeviantArt ({Username})";
 		}
 
 		public List<DeviantArtAccountSettings> DeviantArtAccounts { get; set; } = [];
@@ -32,6 +34,8 @@ namespace ArtworkUploader {
 
 			readonly string FurAffinityFs.FurAffinity.ICredentials.A => a;
 			readonly string FurAffinityFs.FurAffinity.ICredentials.B => b;
+
+			public override readonly string ToString() => $"Fur Affinity ({username})";
 		}
 
 		public List<FurAffinitySettings> FurAffinity { get; set; } = [];
@@ -41,6 +45,8 @@ namespace ArtworkUploader {
 			public string apiKey;
 
 			readonly string IAccountCredentials.Username => username;
+
+			public override readonly string ToString() => $"Weasyl ({username})";
 		}
 
 		public List<WeasylSettings> WeasylApi { get; set; } = [];

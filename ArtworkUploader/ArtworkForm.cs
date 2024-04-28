@@ -230,5 +230,10 @@ namespace ArtworkUploader {
 
 			toolsToolStripMenuItem.Enabled = true;
 		}
+
+		private void postJournalToolStripMenuItem_Click(object sender, EventArgs e) {
+			using var form = new JournalForm();
+			form.ShowDialog(this);
+		}
 	}
 }

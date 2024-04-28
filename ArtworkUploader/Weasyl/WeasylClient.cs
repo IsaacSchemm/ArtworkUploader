@@ -31,6 +31,9 @@ namespace ArtworkUploader.Weasyl {
 		[GeneratedRegex(@"<option value=""(\d+)"">([^<]+)</option>")]
 		private static partial Regex OptionTag();
 
+		[GeneratedRegex(@"^/journal/([0-9]+)/")]
+		private static partial Regex JournalUri();
+
 		public async Task<WeasylUser> WhoamiAsync() {
 			using var resp = await _httpClient.Value.GetAsync("https://www.weasyl.com/api/whoami");
 			resp.EnsureSuccessStatusCode();
@@ -102,6 +105,26 @@ namespace ArtworkUploader.Weasyl {
 
 			using var resp = await _httpClient.Value.SendAsync(req);
 			resp.EnsureSuccessStatusCode();
+		}
+
+		public async Task<int?> UploadJournalAsync(string title, Rating rating, string content, IEnumerable<string> tags) {
+			using var req = new HttpRequestMessage(HttpMethod.Post, "https://www.weasyl.com/submit/journal");
+
+			req.Content = new FormUrlEncodedContent(new Dictionary<string, string> {
+				["title"] = title,
+				["rating"] = $"{(int)rating}",
+				["content"] = content,
+				["tags"] = string.Join(" ", tags.Select(s => s.Replace(' ', '_')))
+			});
+
+			using var resp = await _httpClient.Value.SendAsync(req);
+			resp.EnsureSuccessStatusCode();
+
+			//https://www.weasyl.com/journal/176145/test-1
+			var match = JournalUri().Match(resp.RequestMessage.RequestUri.LocalPath);
+			return match.Success && int.TryParse(match.Groups[1].Value, out int journalid)
+				? journalid
+				: null;
 		}
 	}
 }
