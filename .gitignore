@@ -4,9 +4,7 @@ obj
 *.user
 *.suo
 packages
-CrosspostSharp2/OAuthConsumer.cs
-CrosspostSharp3/OAuthConsumer.cs
-FurAffinityFs.Tests/Credentials.cs
+OAuthConsumer.cs
 Debug
 Release
 x64
