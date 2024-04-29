@@ -5,11 +5,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ArtworkUploader.Weasyl {
-	public partial class WeasylClient(string apiKey) {
+	public partial class WeasylClient(Settings.WeasylSettings weasylSettings) {
 		private static readonly Lazy<HttpMessageHandler> _httpClientHandler =
 			new(() => new SocketsHttpHandler {
 				UseCookies = false,
@@ -20,7 +21,7 @@ namespace ArtworkUploader.Weasyl {
 			var client = new HttpClient(_httpClientHandler.Value, disposeHandler: false);
 			client.DefaultRequestHeaders.Add(
 				"X-Weasyl-API-Key",
-				apiKey);
+				weasylSettings.apiKey);
 			client.DefaultRequestHeaders.UserAgent.Add(
 				new ProductInfoHeaderValue(
 					"ArtworkUploader",
@@ -31,6 +32,9 @@ namespace ArtworkUploader.Weasyl {
 		[GeneratedRegex(@"<option value=""(\d+)"">([^<]+)</option>")]
 		private static partial Regex OptionTag();
 
+		[GeneratedRegex(@"^/~[^/]*/submissions/([0-9]+)/")]
+		private static partial Regex SubmissionUri();
+
 		[GeneratedRegex(@"^/journal/([0-9]+)/")]
 		private static partial Regex JournalUri();
 
@@ -40,9 +44,11 @@ namespace ArtworkUploader.Weasyl {
 			return await resp.Content.ReadFromJsonAsync<WeasylUser>();
 		}
 
-		public record Folder(
-			int FolderId,
-			string Name);
+		public record Folder(int FolderId, string Name) {
+			public override string ToString() {
+				return $"{Name} ({FolderId})";
+			}
+		}
 
 		public async IAsyncEnumerable<Folder> GetFoldersAsync() {
 			using var resp = await _httpClient.Value.GetAsync("https://www.weasyl.com/submit/visual");
@@ -89,7 +95,7 @@ namespace ArtworkUploader.Weasyl {
 			Explicit = 40,
 		}
 
-		public async Task UploadVisualAsync(ReadOnlyMemory<byte> data, string title, SubmissionType subtype, int? folderid, Rating rating, string content, IEnumerable<string> tags) {
+		public async Task<int?> UploadVisualAsync(ReadOnlyMemory<byte> data, string title, SubmissionType subtype, int? folderid, Rating rating, string content, IEnumerable<string> tags) {
 			using var req = new HttpRequestMessage(HttpMethod.Post, "https://www.weasyl.com/submit/visual");
 
 			req.Content = new MultipartFormDataContent {
@@ -105,6 +111,11 @@ namespace ArtworkUploader.Weasyl {
 
 			using var resp = await _httpClient.Value.SendAsync(req);
 			resp.EnsureSuccessStatusCode();
+
+			var match = SubmissionUri().Match(resp.RequestMessage.RequestUri.LocalPath);
+			return match.Success && int.TryParse(match.Groups[1].Value, out int submitid)
+				? submitid
+				: null;
 		}
 
 		public async Task<int?> UploadJournalAsync(string title, Rating rating, string content, IEnumerable<string> tags) {
@@ -120,11 +131,25 @@ namespace ArtworkUploader.Weasyl {
 			using var resp = await _httpClient.Value.SendAsync(req);
 			resp.EnsureSuccessStatusCode();
 
-			//https://www.weasyl.com/journal/176145/test-1
 			var match = JournalUri().Match(resp.RequestMessage.RequestUri.LocalPath);
 			return match.Success && int.TryParse(match.Groups[1].Value, out int journalid)
 				? journalid
 				: null;
+		}
+
+		public async Task RefreshCrowmaskSubmissionAsync(int submitid, string alt = null) {
+			string queryString = alt == null
+				? ""
+				: $"alt={Uri.EscapeDataString(alt)}";
+			using var req = new HttpRequestMessage(HttpMethod.Post, $"https://{weasylSettings.crowmaskHost}/api/submissions/{submitid}/refresh?{queryString}");
+			using var resp = await _httpClient.Value.SendAsync(req);
+			resp.EnsureSuccessStatusCode();
+		}
+
+		public async Task RefreshCrowmaskJournalAsync(int journalid) {
+			using var req = new HttpRequestMessage(HttpMethod.Post, $"https://{weasylSettings.crowmaskHost}/api/journals/{journalid}/refresh");
+			using var resp = await _httpClient.Value.SendAsync(req);
+			resp.EnsureSuccessStatusCode();
 		}
 	}
 }

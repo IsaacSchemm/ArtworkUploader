@@ -13,12 +13,14 @@ namespace ArtworkUploader.Weasyl {
 		public WeasylPostForm(Settings.WeasylSettings s, PostMetadata post, PostImage downloaded) {
 			InitializeComponent();
 
-			_apiClient = _frontendClient = new WeasylClient(s.apiKey);
+			_apiClient = _frontendClient = new WeasylClient(s);
 			_downloaded = downloaded;
 
 			txtTitle.Text = post.Title;
 			txtDescription.Text = post.HTMLDescription;
 			txtTags.Text = string.Join(" ", post.Tags.Select(t => t.Replace(' ', '_')));
+
+			txtAltText.Enabled = s.crowmaskHost != null;
 
 			foreach (var o in Enum.GetValues(typeof(WeasylClient.SubmissionType))) {
 				ddlCategory.Items.Add((WeasylClient.SubmissionType)o);
@@ -56,7 +58,7 @@ namespace ArtworkUploader.Weasyl {
 
 				var folder = ddlFolder.SelectedItem as WeasylClient.Folder;
 
-				await _frontendClient.UploadVisualAsync(
+				int? result = await _frontendClient.UploadVisualAsync(
 					_downloaded.Data,
 					txtTitle.Text,
 					subtype,
@@ -64,6 +66,10 @@ namespace ArtworkUploader.Weasyl {
 					rating,
 					txtDescription.Text,
 					txtTags.Text.Split(' '));
+
+				if (result is int submitid) {
+					await _frontendClient.RefreshCrowmaskSubmissionAsync(submitid, alt: txtAltText.Text);
+				}
 
 				Close();
 			} catch (WebException ex) when (ex.Response is HttpWebResponse r && r.StatusCode == HttpStatusCode.Forbidden && r.Server == "cloudflare") {

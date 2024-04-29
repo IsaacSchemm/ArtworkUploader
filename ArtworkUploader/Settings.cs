@@ -43,6 +43,7 @@ namespace ArtworkUploader {
 		public struct WeasylSettings : IAccountCredentials {
 			public string username;
 			public string apiKey;
+			public string crowmaskHost;
 
 			readonly string IAccountCredentials.Username => username;
 

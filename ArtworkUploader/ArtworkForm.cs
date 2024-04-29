@@ -37,6 +37,10 @@ namespace ArtworkUploader {
 			Shown += (o, e) => {
 				ResetList();
 
+				wbrDescription.Navigate("about:blank");
+				wbrDescription.Document.Write($"<html><head></head><body></body></html>");
+				wbrDescription.Document.Body.SetAttribute("contenteditable", "true");
+
 				if (filename is string f) {
 					LoadImage(f);
 				}
@@ -48,14 +52,6 @@ namespace ArtworkUploader {
 
 			var image = Image.FromFile(filename);
 			pictureBox1.Image = image;
-
-			txtTitle.Text = "";
-			wbrDescription.Navigate("about:blank");
-			wbrDescription.Document.Write($"<html><head></head><body></body></html>");
-			wbrDescription.Document.Body.SetAttribute("contenteditable", "true");
-			txtTags.Text = "";
-			chkMature.Checked = false;
-			chkAdult.Checked = false;
 		}
 
 		private void ResetList() {
@@ -207,16 +203,18 @@ namespace ArtworkUploader {
 			toolsToolStripMenuItem.Enabled = false;
 
 			static async IAsyncEnumerable<Settings.WeasylSettings> promptForCredentials() {
-				using var f = new UsernamePasswordDialog();
-				f.UsernameLabel = "API Key";
-				f.ShowPassword = false;
+				using var f = new WeasylCredentialsForm();
 				if (f.ShowDialog() == DialogResult.OK) {
-					var client = new WeasylClient(f.Username);
-					var user = await client.WhoamiAsync();
-					yield return new Settings.WeasylSettings {
-						username = user.login,
-						apiKey = f.Username
+					var settings = new Settings.WeasylSettings {
+						apiKey = f.ApiKey,
+						crowmaskHost = Uri.CheckHostName(f.CrowmaskHostname) != UriHostNameType.Unknown
+							? f.CrowmaskHostname
+							: null
 					};
+					var client = new WeasylClient(settings);
+					var user = await client.WhoamiAsync();
+					settings.username = user.login;
+					yield return settings;
 				}
 			}
 

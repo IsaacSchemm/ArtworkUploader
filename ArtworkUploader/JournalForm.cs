@@ -45,14 +45,14 @@ namespace ArtworkUploader {
 				} else if (item is Settings.FurAffinitySettings furAffinitySettings) {
 					throw new NotImplementedException();
 				} else if (item is Settings.WeasylSettings weasylSettings) {
-					var client = new WeasylClient(weasylSettings.apiKey);
+					var client = new WeasylClient(weasylSettings);
 					int? journalid = await client.UploadJournalAsync(
 						title: title,
 						rating: WeasylClient.Rating.General,
 						content: html,
 						tags: tags);
 					if (journalid is int j) {
-						MessageBox.Show(this, $"{j}");
+						await client.RefreshCrowmaskJournalAsync(j);
 					}
 				} else {
 					throw new NotImplementedException();
