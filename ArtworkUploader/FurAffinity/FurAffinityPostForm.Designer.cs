@@ -207,7 +207,6 @@
 			// ddlSpecies
 			// 
 			ddlSpecies.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-			ddlSpecies.DisplayMember = "Name";
 			ddlSpecies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			ddlSpecies.FormattingEnabled = true;
 			ddlSpecies.Location = new System.Drawing.Point(379, 136);

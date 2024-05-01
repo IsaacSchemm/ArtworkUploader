@@ -31,16 +31,6 @@ namespace ArtworkUploader.FurAffinity {
 			} else {
 				radRating0.Checked = true;
 			}
-
-			foreach (var x in Enum.GetValues(typeof(Fsfs.Category))) {
-				ddlCategory.Items.Add((Fsfs.Category)x);
-			}
-			foreach (var x in Enum.GetValues(typeof(Fsfs.Type))) {
-				ddlTheme.Items.Add((Fsfs.Type)x);
-			}
-			foreach (var x in Enum.GetValues(typeof(Fsfs.Gender))) {
-				ddlGender.Items.Add((Fsfs.Gender)x);
-			}
 		}
 
 		private static bool HasAlpha(Image image) {
@@ -53,10 +43,16 @@ namespace ArtworkUploader.FurAffinity {
 			chkRemoveTransparency.Enabled = HasAlpha(_downloaded.Image);
 
 			try {
-				var species = await Fsfs.ListSpeciesAsync();
-				foreach (var x in species) {
+				var options = await Fsfs.ListPostOptionsAsync(_credentials);
+
+				foreach (var x in options.Categories)
+					ddlCategory.Items.Add(x);
+				foreach (var x in options.Types)
+					ddlTheme.Items.Add(x);
+				foreach (var x in options.Species)
 					ddlSpecies.Items.Add(x);
-				}
+				foreach (var x in options.Genders)
+					ddlGender.Items.Add(x);
 
 				lblUsername1.Text = await Fsfs.WhoamiAsync(_credentials);
 
@@ -79,7 +75,7 @@ namespace ArtworkUploader.FurAffinity {
 			btnPost.Enabled = false;
 			try {
 				byte[] data = _downloaded.Data.ToArray();
-				string contentType = _downloaded.ContentType;
+				string filename = _downloaded.Filename;
 
 				var image = _downloaded.Image;
 
@@ -96,7 +92,7 @@ namespace ArtworkUploader.FurAffinity {
 					newImage.Save(msout, ImageFormat.Png);
 
 					data = msout.ToArray();
-					contentType = "image/png";
+					filename = "image.png";
 				}
 
 				IEnumerable<long> folderIds() {
@@ -109,18 +105,24 @@ namespace ArtworkUploader.FurAffinity {
 
 				await Fsfs.PostArtworkAsync(
 					_credentials,
-					new Fsfs.File(data, contentType),
+					new Fsfs.File(filename, data),
 					new Fsfs.ArtworkMetadata(
 						title: txtTitle.Text,
 						message: txtDescription.Text,
 						keywords: Fsfs.Keywords(txtTags.Text.Split(' ').Select(s => s.Trim()).Where(s => s != "").ToArray()),
-						cat: (Fsfs.Category)ddlCategory.SelectedItem,
+						cat: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Category> x1
+							? x1.Value
+							: Fsfs.Category.All,
 						scrap: chkScraps.Checked,
-						atype: (Fsfs.Type)ddlTheme.SelectedItem,
-						species: ddlSpecies.SelectedItem is Fsfs.SpeciesInformation s
-							? s.Species
-							: Fsfs.Species.Unspecified,
-						gender: (Fsfs.Gender)ddlGender.SelectedItem,
+						atype: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Type> x2
+							? x2.Value
+							: Fsfs.Type.All,
+						species: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Species> x3
+							? x3.Value
+							: Fsfs.Species.Unspecified_Any,
+						gender: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Gender> x4
+							? x4.Value
+							: Fsfs.Gender.Any,
 						rating: radRating0.Checked ? Fsfs.Rating.General
 							: radRating1.Checked ? Fsfs.Rating.Mature
 							: radRating2.Checked ? Fsfs.Rating.Adult
