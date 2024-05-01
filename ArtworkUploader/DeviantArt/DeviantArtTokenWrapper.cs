@@ -19,5 +19,9 @@ namespace ArtworkUploader.DeviantArt {
 			current.RefreshToken = resp.refresh_token;
 			parent.Save();
 		}
+
+		public override string ToString() {
+			return $"DeviantArt ({Username})";
+		}
 	}
 }

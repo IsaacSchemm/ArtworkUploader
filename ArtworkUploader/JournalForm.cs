@@ -1,4 +1,5 @@
-﻿using ArtworkUploader.Weasyl;
+﻿using ArtworkUploader.DeviantArt;
+using ArtworkUploader.Weasyl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using DeviantArtJournal = DeviantArtFs.Api.Deviation.Journal;
 
 namespace ArtworkUploader {
 	public partial class JournalForm : Form {
@@ -23,7 +26,7 @@ namespace ArtworkUploader {
 			Settings s = Settings.Load();
 
 			foreach (var x in s.DeviantArtAccounts) {
-				checkedListBox1.Items.Add(x);
+				checkedListBox1.Items.Add(new DeviantArtTokenWrapper(s, x));
 			}
 			foreach (var x in s.FurAffinity) {
 				checkedListBox1.Items.Add(x);
@@ -40,10 +43,22 @@ namespace ArtworkUploader {
 			string[] tags = txtTags.Text.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
 			foreach (var item in checkedListBox1.CheckedItems) {
-				if (item is Settings.DeviantArtAccountSettings deviantArtSettings) {
-					throw new NotImplementedException();
+				if (item is DeviantArtTokenWrapper deviantArtTokenWrapper) {
+					await DeviantArtJournal.CreateAsync(
+						deviantArtTokenWrapper,
+						[DeviantArtJournal.ImmutableField.NewBody(html)],
+						[
+							DeviantArtJournal.MutableField.NewTitle(title),
+							DeviantArtJournal.MutableField.NewIsMature(false)
+						]);
 				} else if (item is Settings.FurAffinitySettings furAffinitySettings) {
-					throw new NotImplementedException();
+					await FurAffinityFs.FurAffinity.PostJournalAsync(
+						furAffinitySettings,
+						new FurAffinityFs.FurAffinity.Journal(
+							subject: title,
+							message: text,
+							disable_comments: false,
+							make_featured: false));
 				} else if (item is Settings.WeasylSettings weasylSettings) {
 					var client = new WeasylClient(weasylSettings);
 					int? journalid = await client.UploadJournalAsync(
