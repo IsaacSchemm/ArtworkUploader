@@ -1,18 +1,23 @@
-CrosspostSharp 5.0
-==================
+Artwork Uploader 6.0
+====================
 
-Source: https://github.com/libertyernie/CrosspostSharp
+Source: https://github.com/IsaacSchemm/ArtworkUploader
 
 ------------------
 
-CrosspostSharp is a Windows desktop application (written mostly in C#) that
-loads individual submissions from art sites and lets you post them to your
-other accounts, maintaining the title, description, and tags.
+Artwork Uploader is a Windows desktop application that lets you post artwork
+and journal entries to DeviantArt, Fur Affinity, and Weasyl.
 
-There are currently no plans to post builds of CrosspostSharp 5.0+ to GitHub
-(given the other, more fully-featured crossposting applications that are out
-there, I don't think this application is all that useful to anyone who's not
-already a .NET developer).
+Artwork Uploader does not support:
+
+* Viewing posts
+* Editing posts
+* Deleting posts
+* Other submission types (literary, character, status update, etc.)
+
+To run Artwork Uploader, you'll need the .NET 8.0 and Visual C++ 2022 runtimes
+on 64-bit Windows. (A small amount of C++ code is used to manage browser
+cookies in the embedded web browser.)
 
 Supported Sites
 ---------------
@@ -20,22 +25,16 @@ Supported Sites
 Use the Tools menu to add and remove accounts.
 
 * DeviantArt (uses [DeviantArtFs](https://github.com/IsaacSchemm/DeviantArtFs))
-* Fur Affinity (uses [FAExport](https://faexport.spangle.org.uk/) for viewing
-  posts and [FurAffinityFs](https://github.com/IsaacSchemm/FurAffinityFs) for
-  upload)
-* Furry Network
-* Inkbunny
-* Mastodon (uses [Pleronet](https://github.com/Solexid/Pleronet))
-* Pixelfed (uses [Pleronet](https://github.com/Solexid/Pleronet))
+* Fur Affinity (uses [FurAffinityFs](https://github.com/IsaacSchemm/FurAffinityFs))
 * Weasyl
 
-You can also open or save local files in PNG or JPEG format.
+The Weasyl uploader also supports setting alt text for [Crowmask](https://github.com/IsaacSchemm/Crowmask).
 
 Credentials
 -----------
 
-Credentials are stored in the file CrosspostSharp.json. This includes tokens
-that give CrosspostSharp access to your accounts. Make sure you keep
+Credentials are stored in the file ArtworkUploader.json. This includes tokens
+that give Artwork Uploader access to your accounts. Make sure you keep
 this file safe!
 
 Compiling from Source
@@ -43,14 +42,13 @@ Compiling from Source
 
 This project can be built with Visual Studio 2022.
 
-The file OAuthConsumer.cs is missing from the ArtworkUploader project. Get your own
-OAuth keys, then put something like the following into OAuthConsumer.cs:
+To include DeviantArt support, edit the file DeviantArtAppCredentials.cs:
 
-    namespace CrosspostSharp {
-        public static class OAuthConsumer {
-            public static class DeviantArt {
-                public static string CLIENT_ID = "client_id goes here";
-                public static string CLIENT_SECRET = "client_secret goes here";
-            }
-        }
-    }
+	using DeviantArtFs;
+
+	namespace ArtworkUploader {
+		public static class DeviantArtAppCredentials {
+			public static DeviantArtApp AppCredentials =>
+				new DeviantArtApp("client_id", "client_secret");
+		}
+	}
