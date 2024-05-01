@@ -35,6 +35,10 @@ namespace ArtworkUploader {
 			InitializeComponent();
 
 			Shown += (o, e) => {
+				if (DeviantArtAppCredentials.AppCredentials == null) {
+					deviantArtToolStripMenuItem.Visible = false;
+				}
+
 				ResetList();
 
 				wbrDescription.Navigate("about:blank");
@@ -142,16 +146,21 @@ namespace ArtworkUploader {
 		private void deviantArtToolStripMenuItem_Click(object sender, EventArgs e) {
 			toolsToolStripMenuItem.Enabled = false;
 
+			var app = DeviantArtAppCredentials.AppCredentials;
+			if (app == null) {
+				MessageBox.Show(this, "DeviantArt is not supported.");
+				return;
+			}
+
 			async IAsyncEnumerable<Settings.DeviantArtAccountSettings> promptForCredentials() {
 				using var f = new DeviantArtAuthorizationCodeForm(
-					OAuthConsumer.DeviantArt.CLIENT_ID,
+					int.Parse(app.client_id),
 					new Uri("https://www.example.com"),
 					["browse", "user", "stash", "publish", "user.manage"]);
 				f.Width = 525;
 				f.Height = 800;
 				if (f.ShowDialog(this) == DialogResult.OK) {
-					var a = new DeviantArtApp(OAuthConsumer.DeviantArt.CLIENT_ID.ToString(), OAuthConsumer.DeviantArt.CLIENT_SECRET);
-					var token = await DeviantArtAuth.GetTokenAsync(a, f.Code, new Uri("https://www.example.com"));
+					var token = await DeviantArtAuth.GetTokenAsync(app, f.Code, new Uri("https://www.example.com"));
 					var u = await DeviantArtFs.Api.User.WhoamiAsync(token);
 					yield return new Settings.DeviantArtAccountSettings {
 						AccessToken = token.access_token,
