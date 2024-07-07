@@ -110,17 +110,17 @@ namespace ArtworkUploader.FurAffinity {
 						title: txtTitle.Text,
 						message: txtDescription.Text,
 						keywords: Fsfs.Keywords(txtTags.Text.Split(' ').Select(s => s.Trim()).Where(s => s != "").ToArray()),
-						cat: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Category> x1
+						cat: ddlCategory.SelectedItem is Fsfs.PostOption<Fsfs.Category> x1
 							? x1.Value
 							: Fsfs.Category.All,
 						scrap: chkScraps.Checked,
-						atype: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Type> x2
+						atype: ddlTheme.SelectedItem is Fsfs.PostOption<Fsfs.Type> x2
 							? x2.Value
 							: Fsfs.Type.All,
 						species: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Species> x3
 							? x3.Value
 							: Fsfs.Species.Unspecified_Any,
-						gender: ddlSpecies.SelectedItem is Fsfs.PostOption<Fsfs.Gender> x4
+						gender: ddlGender.SelectedItem is Fsfs.PostOption<Fsfs.Gender> x4
 							? x4.Value
 							: Fsfs.Gender.Any,
 						rating: radRating0.Checked ? Fsfs.Rating.General
