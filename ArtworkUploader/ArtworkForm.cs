@@ -215,10 +215,7 @@ namespace ArtworkUploader {
 				using var f = new WeasylCredentialsForm();
 				if (f.ShowDialog() == DialogResult.OK) {
 					var settings = new Settings.WeasylSettings {
-						apiKey = f.ApiKey,
-						crowmaskHost = Uri.CheckHostName(f.CrowmaskHostname) != UriHostNameType.Unknown
-							? f.CrowmaskHostname
-							: null
+						apiKey = f.ApiKey
 					};
 					var client = new WeasylClient(settings);
 					var user = await client.WhoamiAsync();

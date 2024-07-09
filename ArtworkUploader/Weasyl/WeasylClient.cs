@@ -136,20 +136,5 @@ namespace ArtworkUploader.Weasyl {
 				? journalid
 				: null;
 		}
-
-		public async Task RefreshCrowmaskSubmissionAsync(int submitid, string alt = null) {
-			string queryString = alt == null
-				? ""
-				: $"alt={Uri.EscapeDataString(alt)}";
-			using var req = new HttpRequestMessage(HttpMethod.Post, $"https://{weasylSettings.crowmaskHost}/api/submissions/{submitid}/refresh?{queryString}");
-			using var resp = await _httpClient.Value.SendAsync(req);
-			resp.EnsureSuccessStatusCode();
-		}
-
-		public async Task RefreshCrowmaskJournalAsync(int journalid) {
-			using var req = new HttpRequestMessage(HttpMethod.Post, $"https://{weasylSettings.crowmaskHost}/api/journals/{journalid}/refresh");
-			using var resp = await _httpClient.Value.SendAsync(req);
-			resp.EnsureSuccessStatusCode();
-		}
 	}
 }

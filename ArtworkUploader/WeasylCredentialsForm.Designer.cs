@@ -25,8 +25,6 @@
 		private void InitializeComponent() {
 			label1 = new System.Windows.Forms.Label();
 			textBox1 = new System.Windows.Forms.TextBox();
-			textBox2 = new System.Windows.Forms.TextBox();
-			label2 = new System.Windows.Forms.Label();
 			button1 = new System.Windows.Forms.Button();
 			button2 = new System.Windows.Forms.Button();
 			SuspendLayout();
@@ -47,23 +45,6 @@
 			textBox1.Name = "textBox1";
 			textBox1.Size = new System.Drawing.Size(310, 23);
 			textBox1.TabIndex = 1;
-			// 
-			// textBox2
-			// 
-			textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			textBox2.Location = new System.Drawing.Point(12, 77);
-			textBox2.Name = "textBox2";
-			textBox2.Size = new System.Drawing.Size(310, 23);
-			textBox2.TabIndex = 3;
-			// 
-			// label2
-			// 
-			label2.AutoSize = true;
-			label2.Location = new System.Drawing.Point(12, 59);
-			label2.Name = "label2";
-			label2.Size = new System.Drawing.Size(174, 15);
-			label2.TabIndex = 2;
-			label2.Text = "Crowmask hostname (optional)";
 			// 
 			// button1
 			// 
@@ -96,8 +77,6 @@
 			ClientSize = new System.Drawing.Size(334, 161);
 			Controls.Add(button2);
 			Controls.Add(button1);
-			Controls.Add(textBox2);
-			Controls.Add(label2);
 			Controls.Add(textBox1);
 			Controls.Add(label1);
 			Name = "WeasylCredentialsForm";
@@ -110,8 +89,6 @@
 
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button2;
 	}

@@ -37,8 +37,6 @@
 			ddlRating = new System.Windows.Forms.ComboBox();
 			lblRating = new System.Windows.Forms.Label();
 			btnPost = new System.Windows.Forms.Button();
-			txtAltText = new System.Windows.Forms.TextBox();
-			lblAltText = new System.Windows.Forms.Label();
 			SuspendLayout();
 			// 
 			// lblUsername1
@@ -88,7 +86,7 @@
 			txtDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			txtDescription.Multiline = true;
 			txtDescription.Name = "txtDescription";
-			txtDescription.Size = new System.Drawing.Size(453, 137);
+			txtDescription.Size = new System.Drawing.Size(453, 166);
 			txtDescription.TabIndex = 4;
 			// 
 			// lblTags
@@ -189,33 +187,11 @@
 			btnPost.UseVisualStyleBackColor = true;
 			btnPost.Click += btnPost_Click;
 			// 
-			// txtAltText
-			// 
-			txtAltText.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-			txtAltText.Location = new System.Drawing.Point(99, 204);
-			txtAltText.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-			txtAltText.Name = "txtAltText";
-			txtAltText.Size = new System.Drawing.Size(453, 23);
-			txtAltText.TabIndex = 6;
-			// 
-			// lblAltText
-			// 
-			lblAltText.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-			lblAltText.AutoSize = true;
-			lblAltText.Location = new System.Drawing.Point(13, 207);
-			lblAltText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			lblAltText.Name = "lblAltText";
-			lblAltText.Size = new System.Drawing.Size(78, 15);
-			lblAltText.TabIndex = 5;
-			lblAltText.Text = "Alternate text";
-			// 
 			// WeasylPostForm
 			// 
 			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			ClientSize = new System.Drawing.Size(565, 359);
-			Controls.Add(lblAltText);
-			Controls.Add(txtAltText);
 			Controls.Add(btnPost);
 			Controls.Add(ddlRating);
 			Controls.Add(lblRating);
@@ -253,7 +229,5 @@
 		private System.Windows.Forms.ComboBox ddlRating;
 		private System.Windows.Forms.Label lblRating;
 		private System.Windows.Forms.Button btnPost;
-		private System.Windows.Forms.TextBox txtAltText;
-		private System.Windows.Forms.Label lblAltText;
 	}
 }

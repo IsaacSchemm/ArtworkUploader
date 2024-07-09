@@ -66,9 +66,6 @@ namespace ArtworkUploader {
 						rating: WeasylClient.Rating.General,
 						content: html,
 						tags: tags);
-					if (journalid is int j) {
-						await client.RefreshCrowmaskJournalAsync(j);
-					}
 				} else {
 					throw new NotImplementedException();
 				}

@@ -20,8 +20,6 @@ namespace ArtworkUploader.Weasyl {
 			txtDescription.Text = post.HTMLDescription;
 			txtTags.Text = string.Join(" ", post.Tags.Select(t => t.Replace(' ', '_')));
 
-			txtAltText.Enabled = s.crowmaskHost != null;
-
 			foreach (var o in Enum.GetValues(typeof(WeasylClient.SubmissionType))) {
 				ddlCategory.Items.Add((WeasylClient.SubmissionType)o);
 			}
@@ -66,10 +64,6 @@ namespace ArtworkUploader.Weasyl {
 					rating,
 					txtDescription.Text,
 					txtTags.Text.Split(' '));
-
-				if (result is int submitid) {
-					await _frontendClient.RefreshCrowmaskSubmissionAsync(submitid, alt: txtAltText.Text);
-				}
 
 				Close();
 			} catch (WebException ex) when (ex.Response is HttpWebResponse r && r.StatusCode == HttpStatusCode.Forbidden && r.Server == "cloudflare") {
